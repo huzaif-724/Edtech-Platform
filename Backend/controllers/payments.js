@@ -5,7 +5,6 @@ const mailSender = require("../utils/mailSender")
 const mongoose = require("mongoose");
 const crypto = require("crypto");
 const {courseEnrollmentEmail} = require("../mailTemplate/courseEnrollmentEmail");
-const { paymentSuccessEmail } = require("../mailTemplate/paymentSuccessEmail")
 
 
 
@@ -46,6 +45,10 @@ exports.capturePayment = async (req, res) => {
         amount: course.price * 100, // Convert to paise
         currency: 'INR',
         receipt: `receipt_${Date.now()}`,
+        notes : {
+          courseId,
+          userId
+        }
       };
   
       // Initiate the payment using Razorpay
@@ -69,7 +72,7 @@ exports.capturePayment = async (req, res) => {
 
 exports.verifySignature = async (req, res)=>{
 
-    const webhookSecret = "12345678"; // Replace with your actual secret
+    const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET;
     const signature = req.headers["x-razorpay-signature"];
 
     // Generate hash using secret and request body
@@ -81,7 +84,8 @@ exports.verifySignature = async (req, res)=>{
         console.log("Payment is Authorised");
 
         // Extract courseId and userId from the payload
-        const { courseId, userId } = req.body.payload.payment.entity.notes;
+        const notes = req.body?.payload?.payment?.entity?.notes || {};
+        const { courseId, userId } = notes;
 
         try {
             // Validate courseId and userId
@@ -121,12 +125,16 @@ exports.verifySignature = async (req, res)=>{
             const mailResponse = await mailSender(
                 enrolledStudent.email,
                 `Successfully Enrolled into ${enrolledCourse.title}`,
-                emailTemplate(enrolledCourse.title, enrolledStudent.name) // Generate the email body using the template
+                courseEnrollmentEmail(enrolledCourse.title, enrolledStudent.name) // Generate the email body using the template
             );
             console.log("Verification email sent successfully: ", mailResponse.response);
 
 
             //return response
+            return res.status(200).json({
+                success : true,
+                message : "Signature Verified and Course Added"
+            })
 
         }
         catch(error)
@@ -139,6 +147,13 @@ exports.verifySignature = async (req, res)=>{
             });
         }   
 
+    }
+    else{
+        return res.status(400).json({
+          success: false,
+          message: "Invalid Request",
+         
+      });
     }
     
 }
