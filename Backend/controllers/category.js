@@ -40,4 +40,46 @@ exports.createCategory = async (req, res) => {
         message: error.message,
       })
     }
+}
+
+exports.categoryPageDetails = async (req, res) => {
+  try {
+      const { categoryId } = req.body
+
+      // Get courses for the specified category
+      const selectedCategory = await Category.findById(categoryId)
+        .populate("courses")
+        .exec()
+
+      if (!selectedCategory) {
+        console.log("Category not found.")
+        return res
+          .status(404)
+          .json({ success: false, message: "Category not found" })
+      }
+
+      if (selectedCategory.courses.length === 0) {
+        console.log("No courses found for the selected category.")
+          return res.status(404).json({
+            success: false,
+            message: "No courses found for the selected category.",
+        })
+
+      }
+
+      res.status(200).json({
+        success: true,
+        data: {
+          selectedCategory
+        },
+      })
   }
+  catch(error)
+  {
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      error: error.message,
+    })
+  }
+}
