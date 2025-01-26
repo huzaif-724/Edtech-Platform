@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router();
 
 
-const {createCourse, getAllCourses, getCourseDetails} = require("../controllers/course");
+const {createCourse, getAllCourses, getCourseDetails, editCourse} = require("../controllers/course");
 const {createCategory, showAllCategories, categoryPageDetails} = require("../controllers/category")
 const {createSection, updateSection, deleteSection} = require("../controllers/section")
 const {createSubSection, updateSubSection, deleteSubSection} = require("../controllers/subSection")
@@ -10,6 +10,7 @@ const {createSubSection, updateSubSection, deleteSubSection} = require("../contr
 const {auth, isInstructor, isStudent} = require("../middlewares/auth");
 
 router.post("/createCourse", auth, isInstructor, createCourse);
+router.post("/editCourse", auth, isInstructor, editCourse);
 router.get("/getAllCourses",auth,  getAllCourses)
 router.get("/getCourseDetails", auth, getCourseDetails)
 

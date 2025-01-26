@@ -182,3 +182,64 @@ exports.getCourseDetails = async (req, res)=>{
 }
 
 
+// Edit Course Details
+exports.editCourse = async (req, res) => {
+    try {
+      const { courseId } = req.body
+      const updates = req.body
+      const course = await Course.findById(courseId)
+  
+      if (!course) {
+        return res.status(404).json({ 
+            error: "Course not found" 
+        })
+      }
+  
+      // If Thumbnail Image is found, update it
+      if (req.files) {
+        const thumbnail = req.files.thumbnailImage
+        const thumbnailImage = await uploadImageToCloudinary(
+          thumbnail,
+          process.env.FOLDER_NAME
+        )
+        course.thumbnail = thumbnailImage.secure_url
+      }
+  
+      // Update only the fields that are present in the request body
+      for (const key in updates) {
+        if (updates.hasOwnProperty(key)) {   
+            course[key] = updates[key]    
+        }
+      }
+  
+      await course.save()
+  
+      const updatedCourse = await Course.findOne({
+        _id: courseId,
+      })
+        .populate("instructor")
+        .populate("category")
+        .populate({
+          path: "courseContent",
+          populate: {
+            path: "subSection",
+          },
+        })
+        .exec()
+  
+      return res.status(200).json({
+        success: true,
+        message: "Course updated successfully",
+        data: updatedCourse,
+      })
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({
+        success: false,
+        message: "Internal server error",
+        error: error.message,
+      })
+    }
+  }
+
+
