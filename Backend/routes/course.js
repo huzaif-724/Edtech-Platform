@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router();
 
 
-const {createCourse, getAllCourses, getCourseDetails, editCourse, deleteCourse} = require("../controllers/course");
+const {createCourse, getAllCourses, getCourseDetails, editCourse, deleteCourse, getEnrolledCourses, getInstructorCourses, getFullCourseDetails} = require("../controllers/course");
 const {createCategory, showAllCategories, categoryPageDetails} = require("../controllers/category")
 const {createSection, updateSection, deleteSection} = require("../controllers/section")
 const {createSubSection, updateSubSection, deleteSubSection} = require("../controllers/subSection")
@@ -14,6 +14,9 @@ router.post("/editCourse", auth, isInstructor, editCourse);
 router.delete("/deleteCourse", auth, isInstructor, deleteCourse);
 router.get("/getAllCourses",auth,  getAllCourses)
 router.get("/getCourseDetails", auth, getCourseDetails)
+router.get("/getEnrolledCourses", auth, isStudent, getEnrolledCourses)
+router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses)
+router.get("/getFullCourseDetails", auth, getFullCourseDetails)
 
 router.post("/createSection", auth, isInstructor, createSection)
 router.post("/updateSection", auth, isInstructor, updateSection)

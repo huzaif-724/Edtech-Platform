@@ -257,13 +257,13 @@ exports.deleteCourse = async (req, res) => {
             })
         }
 
-    //   // Check if the logged-in user is the instructor of the course
-    //     if (String(course.instructor) !== String(req.user.id)) {
-    //         return res.status(403).json({
-    //         success: false,
-    //         message: "You are not authorized to delete this course",
-    //         });
-    //     }
+      // Check if the logged-in user is the instructor of the course
+        if (String(course.instructor) !== String(req.user.id)) {
+            return res.status(403).json({
+            success: false,
+            message: "You are not authorized to delete this course",
+            });
+        }
   
         // Unenroll students from the course
         const studentsEnrolled = course.studentsEnroled
@@ -304,7 +304,132 @@ exports.deleteCourse = async (req, res) => {
             error: error.message,
         })
     }
-  }
+}
+
+
+
+exports.getEnrolledCourses = async (req, res) =>{
+
+   try{
+        const userId = req.user.id
+        let userDetails = await User.findOne({
+        _id: userId,
+        })
+        .populate({
+            path: "courses",
+            populate: {
+            path: "courseContent",
+            populate: {
+                path: "subSection",
+            },
+            },
+        })
+        .exec()
+
+        if (!userDetails) {
+            return res.status(400).json({
+              success: false,
+              message: `Could not find user with id: ${userDetails}`,
+            })
+        }
+
+        return res.status(200).json({
+            success: true,
+            data: userDetails.courses,
+        })
+            
+   }
+   catch(error){
+        return res.status(500).json({
+            success: false,
+            message: error.message,
+        })
+   }
+
+}
+
+
+// Get a list of Course for a given Instructor
+exports.getInstructorCourses = async (req, res) => {
+    try {
+      // Get the instructor ID from the authenticated user or request body
+      const instructorId = req.user.id
+  
+      // Find all courses belonging to the instructor
+      const instructorCourses = await Course.find({
+        instructor: instructorId,
+      }).sort({ createdAt: -1 })
+  
+      // Return the instructor's courses
+      res.status(200).json({
+        success: true,
+        data: instructorCourses,
+      })
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({
+        success: false,
+        message: "Failed to retrieve instructor courses",
+        error: error.message,
+      })
+    }
+}
+
+
+
+exports.getFullCourseDetails = async (req, res)=>{
+
+    try{
+         const {courseId} = req.body;
+ 
+         const courseDetails = await Course.findById(courseId)
+                             .populate("instructor")
+                             .populate("category")
+                             .populate(
+                                 {
+                                     path : "courseContent",
+                                     populate : {
+                                         path : "subSection"
+                                     }
+                                 }
+                             )
+                             .exec();
+                             
+         if (!courseDetails) {
+             return res.status(400).json({
+                 success: false,
+                 message: `Could not find course with id: ${courseId}`,
+             })
+         }
+ 
+         let totalDurationInSeconds = 0
+         courseDetails.courseContent.forEach((content) => {
+             content.subSection.forEach((subSection) => {
+                 const timeDurationInSeconds = parseInt(subSection.timeDuration)
+                 totalDurationInSeconds += timeDurationInSeconds
+             })
+         })
+ 
+         const totalDuration = convertSecondsToDuration(totalDurationInSeconds)
+ 
+         return res.status(200).json({
+             success: true,
+             message : "Course Details Fetched Successfully",
+             data: {
+               courseDetails,
+               totalDuration,
+             },
+         })
+ 
+    }
+    catch(error)
+    {
+         return res.status(500).json({
+             success: false,
+             message: error.message,
+         })
+    }
+}
   
 
 
