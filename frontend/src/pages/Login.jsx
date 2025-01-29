@@ -2,13 +2,17 @@ import React from "react";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Tab from "../components/Tab";
-import { setSignupData } from "../slices/authSlice";
 import signupImage from "../assets/signupImage.png";
+import axios from "axios";
+import { endpoints } from "../services/api";
+import { setToken } from "../slices/authSlice";
+import { useDispatch } from "react-redux";
 
-const Signup = () => {
+const { LOGIN_API } = endpoints;
+
+const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,16 +25,13 @@ const Signup = () => {
   const [accountType, setAccountType] = useState(ACCOUNT_TYPE.STUDENT);
 
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
-    confirmPassword: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const { name, email, password, confirmPassword } = formData;
+  const { email, password } = formData;
 
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
@@ -39,20 +40,31 @@ const Signup = () => {
     }));
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
+    const toastId = toast.loading("Loading...");
+    try {
+      const response = await axios.post(LOGIN_API, {
+        email: email,
+        password: password,
+      });
 
-    if (password !== confirmPassword) {
-      toast.error("Passwords Do Not Match");
-      return;
+      if (!response.data.success) {
+        throw new Error(response.data.message);
+      }
+
+      console.log("response :>> ", response);
+
+      dispatch(setToken(response.data.token));
+
+      toast.success("Logged In");
+      navigate("/allCourses");
+    } catch (error) {
+      console.log("error :>> ", error);
+      toast.error(error.response?.data?.message || "Login Failed");
     }
 
-    const signupData = {
-      ...formData,
-      accountType,
-    };
-
-    dispatch(setSignupData(signupData));
+    toast.dismiss(toastId);
   };
 
   // data to pass to Tab component
@@ -159,4 +171,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;
