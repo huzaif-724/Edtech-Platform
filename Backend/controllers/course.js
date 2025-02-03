@@ -105,6 +105,7 @@ exports.getAllCourses = async (req, res) => {
     try {
         const allCourses = await Course.find()
             .populate("instructor")
+            .populate("category")
             .exec()
     
         return res.status(200).json({

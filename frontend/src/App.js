@@ -4,6 +4,8 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import VerifyEmail from "./pages/VerifyEmail";
+import AllCourses from "./pages/AllCourse";
+import CourseDetails from "./pages/CourseDetails";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/verify-email" element={<VerifyEmail/>}/>
+          <Route path="/allCourses" element={<AllCourses/>}/>
+          <Route path="/courseDetails" element={<CourseDetails/>}/>
         </Routes>
         
        </div>
