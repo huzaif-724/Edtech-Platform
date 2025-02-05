@@ -162,14 +162,7 @@ exports.getCourseDetails = async (req, res)=>{
             success: true,
             message : "Course Details Fetched Successfully",
             data: {
-              title : courseDetails.title,
-              thumbnail : courseDetails.thumbnail,
-              tag : courseDetails.tag,
-              description : courseDetails.description,
-              price : courseDetails.price,
-              category : courseDetails.category,
-              whatYouWillLearn : courseDetails.whatYouWillLearn,
-              instructor : courseDetails.instructor,
+              courseDetails,
               totalDuration,
             },
         })

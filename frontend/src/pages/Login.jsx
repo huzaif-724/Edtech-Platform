@@ -7,7 +7,7 @@ import Tab from "../components/Tab";
 import signupImage from "../assets/signupImage.png";
 import axios from "axios";
 import { endpoints } from "../services/api";
-import { setToken } from "../slices/authSlice";
+import { setToken, setUser } from "../slices/authSlice";
 import { useDispatch } from "react-redux";
 
 const { LOGIN_API } = endpoints;
@@ -56,6 +56,7 @@ const Login = () => {
       console.log("response :>> ", response);
 
       dispatch(setToken(response.data.token));
+      dispatch(setUser(response.data));
 
       toast.success("Logged In");
       navigate("/allCourses");

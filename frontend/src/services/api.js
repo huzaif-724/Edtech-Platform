@@ -7,5 +7,6 @@ export const endpoints = {
   LOGIN_API: BASE_URL + "/auth/login", 
 
   GET_ALL_COURSES_API : BASE_URL + "/course/getAllCourses",
+  GET_COURSE_DETAILS : BASE_URL + "/course/getCourseDetails"
 
 }

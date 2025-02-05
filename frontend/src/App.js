@@ -19,7 +19,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/verify-email" element={<VerifyEmail/>}/>
           <Route path="/allCourses" element={<AllCourses/>}/>
-          <Route path="/courseDetails" element={<CourseDetails/>}/>
+          <Route path="courses/:courseId" element={<CourseDetails />} />
         </Routes>
         
        </div>

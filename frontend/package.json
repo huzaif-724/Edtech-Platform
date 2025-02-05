@@ -6,6 +6,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@reduxjs/toolkit": "^2.5.0",
     "axios": "^1.7.9",
+    "copy-to-clipboard": "^3.3.3",
     "cors": "^2.8.5",
     "cra-template": "1.2.0",
     "react": "^19.0.0",

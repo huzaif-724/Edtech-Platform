@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import img from "../assets/hero image.webp";
 
-const CourseCard = ({ title, category, price, thumbnail, instructor }) => {
+const CourseCard = ({ title, category, price, thumbnail, instructor, courseId}) => {
   return (
-    <Link to={`/courses`} className="block w-full">
+    <Link to={`/courses/${courseId}`} className="block w-full">
       <div className="bg-richblack-800 w-[290px] h-[370px] lg:w-[300px]  text-white rounded-xl shadow-md overflow-hidden transition-transform transform hover:scale-105">
         {/* Course Thumbnail */}
         <img

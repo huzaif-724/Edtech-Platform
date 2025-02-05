@@ -70,6 +70,7 @@ const AllCourses = () => {
           <CourseCard
             key={course._id}
             title={course.title}
+            courseId={course._id}
             category={course.category.name}
             price={course.price}
             thumbnail={course.thumbnail}

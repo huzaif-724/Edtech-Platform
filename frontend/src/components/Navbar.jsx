@@ -33,7 +33,7 @@ const Navbar = () => {
             <>
 
               <button
-                className="rounded-md border  px-1 py-2 border-blue-700 bg-richblack-900  lg:px-4 lg:py-2 text-white hover:bg-blue-800"
+                className="rounded-md border  px-1 py-2 border-none bg-richblack-900  lg:px-4 lg:py-2 text-white hover:bg-blue-800"
               >
                 Dashboard
               </button>
@@ -41,7 +41,7 @@ const Navbar = () => {
 
               <button
                 onClick={handleLogout}
-                className="rounded-md border px-1 py-2 border-blue-700 bg-richblack-900  lg:px-4 lg:py-2 text-white hover:bg-blue-800"
+                className="rounded-md border px-1 py-2 border-none bg-richblack-900  lg:px-4 lg:py-2 text-white hover:bg-blue-800"
               >
                 Logout
               </button>
@@ -50,12 +50,12 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/login">
-                <button className="rounded-md border px-2 py-2 border-blue-700 bg-richblack-900   lg:px-4 lg:py-2 text-white hover:bg-blue-800">
+                <button className="rounded-md border px-2 py-2 border-none bg-richblack-900   lg:px-4 lg:py-2 text-white hover:bg-blue-800">
                   Login
                 </button>
               </Link>
               <Link to="/signup">
-                <button className="rounded-md border px-2 py-2 border-blue-700 bg-richblack-900  lg:px-4 lg:py-2 text-white hover:bg-blue-800">
+                <button className="rounded-md border px-2 py-2 border-none bg-richblack-900  lg:px-4 lg:py-2 text-white hover:bg-blue-800">
                   Signup
                 </button>
               </Link>
