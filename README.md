@@ -20,13 +20,23 @@ Instructor Dashboard (Manage Courses, Upload Content) <br />
 Student Dashboard (Track Enrolled Courses) <br />
 Razorpay Payment Integration <br />
 
-## Tech Stack
+## 🛠️ Tech Stack 
+### Frontend 
+React.js (UI framework) <br />
+Tailwind CSS (Styling) <br />
+React Router (Navigation) <br />
+Redux Toolkit (State Management) <br />
+React Icons (Icons) <br />
+### Backend
+Node.js (Runtime) <br />
+Express.js (Backend framework) <br />
+MongoDB (Database) <br />
+Mongoose (ODM for MongoDB) <br />
+JWT (Authentication) <br />
+Bcrypt.js (Password hashing) <br />
+### Payments
+Razorpay (Payment Gateway)
 
-Frontend: React.js <br />
-Backend: Node.js with Express.js<br />
-Database: MongoDB<br />
-Styling: Tailwind CSS <br />
-Authentication: JSON Web Tokens (JWT)<br />
 
 ## Getting Started
 
