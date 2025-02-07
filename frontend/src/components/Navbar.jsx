@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import logo from "../assets/Logo-Full-Light.png";
+import logo from "../assets/edtechLogo.png";
 import {Link, useNavigate} from "react-router-dom"
 import { AiOutlineMenu } from "react-icons/ai";
 import {logout} from "../slices/authSlice";
@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="flex w-11/12 max-w-maxContent items-center justify-between">
         {/* Logo */}
         <Link to="/">
-          <img src={logo} alt="Logo" width={100} height={32} />
+          <img src={logo} alt="Logo" width={70} height={32} />
         </Link>
 
         {/* Buttons */}

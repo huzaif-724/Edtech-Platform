@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import img from "../assets/hero image.webp";
+
 
 const CourseCard = ({ title, category, price, thumbnail, instructor, courseId}) => {
   return (
@@ -8,7 +8,7 @@ const CourseCard = ({ title, category, price, thumbnail, instructor, courseId}) 
       <div className="bg-richblack-800 w-[290px] h-[370px] lg:w-[300px]  text-white rounded-xl shadow-md overflow-hidden transition-transform transform hover:scale-105">
         {/* Course Thumbnail */}
         <img
-          src={img}
+          src={thumbnail}
           alt="Course Thumbnail"
           className="h-[210px] w-full object-cover"
           loading="lazy"

@@ -13,19 +13,19 @@ const Home = () => {
         {/* Left Section - Text & Button */}
         <div className="text-center md:text-left space-y-6">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text">
-            Every Thought Matters <br /> Write, Share & Inspire.
+          Unlock your coding potential with our online courses.
           </h1>
-          <p className="text-lg text-gray-400">
-            Start exploring and sharing your ideas today!
+          <p className="text-lg text-richblack-200">
+          Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you.
           </p>
 
           {/* Share Button */}
           <button
             onClick={() => navigate("/login")}
-            className="flex items-center justify-center gap-3 w-[150px] px-4 py-2 rounded-lg border border-white bg-richblack-800 text-white text-xl hover:bg-richblack-700 transition duration-300 mx-auto md:mx-0"
+            className="flex items-center justify-center gap-3 w-[170px] px-4 py-2 rounded-lg border border-white bg-richblack-800 text-white text-xl hover:bg-richblack-700 transition duration-300 mx-auto md:mx-0"
           >
             <span className="bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text">
-              Share
+              Learn More
             </span>
             <PiShareFatFill className="text-white" />
           </button>
