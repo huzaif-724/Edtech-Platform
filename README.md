@@ -42,12 +42,12 @@ Razorpay (Payment Gateway)
 
 1. Clone the repository:
 ```bash
-https://github.com/huzaif-724/BlogApp.git
+git clone https://github.com/your-username/your-repo-name.git
 ```
 
 2. Navigate to the project directory:
 ```bash
-cd BlogApp
+cd your-repo-name
 ```
 
 3. Install dependencies:
@@ -75,16 +75,14 @@ npm start
 
 ## Screenshots
 
-![Screenshot 2025-01-20 144640](https://github.com/user-attachments/assets/8dd3cab9-01c0-4a3e-bd96-098e27dbe943)
+![Screenshot 2025-02-07 210507](https://github.com/user-attachments/assets/c0c963fd-8b62-4d1c-b3b0-e31db956cf83)
 
-![Screenshot 2025-01-20 144657](https://github.com/user-attachments/assets/2583cfd7-6bfa-44f7-997b-e685ac5bb7d1)
+![Screenshot 2025-02-07 205736](https://github.com/user-attachments/assets/dc56577f-571c-40f4-afd8-22382c625773)
 
-![Screenshot 2025-01-20 144730](https://github.com/user-attachments/assets/295201f7-4277-4e72-9947-349e1737beaf)
+![Screenshot 2025-02-07 205720](https://github.com/user-attachments/assets/635d4a3c-c81b-46b0-9725-6172843b671e)
 
-![Screenshot 2025-01-20 144803](https://github.com/user-attachments/assets/1b8aaef6-6587-48d8-82e9-f8431a3065bb)
+![Screenshot 2025-02-07 205627](https://github.com/user-attachments/assets/a1d8167c-3b67-4273-97e3-8f3c4163c82c)
 
-![Screenshot 2025-01-20 144829](https://github.com/user-attachments/assets/d2c42b89-9b7a-418c-b4b0-6675f4f60cac)
-
-
+![Screenshot 2025-02-07 205656](https://github.com/user-attachments/assets/a8251de3-1695-448c-8e61-046c0ec24a7c)
 
 
