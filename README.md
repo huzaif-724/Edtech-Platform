@@ -1,5 +1,5 @@
 # E-Learning Platform (MERN Stack)
-A full-stack web application where instructors can create courses, and students can purchase and enroll in courses. Includes video lectures, PDF notes, and a dashboard for both roles.
+A full-stack web application where instructors can create courses, and students can purchase and enroll in courses. Includes video lectures, PDF notes, and a dashboard for both roles. <br />
 🚧 This project is currently under development. 🚧
 
 ## 🚀 Features (Ongoing Development)
