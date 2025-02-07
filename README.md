@@ -8,6 +8,7 @@ A full-stack web application where instructors can create courses, and students 
 User Authentication (Signup, Login, Logout) <br />
 Home Page & Course Browsing <br />
 Course Details Page <br />
+Role-based access control (Instructor & Student)
 
 ## Tech Stack
 
