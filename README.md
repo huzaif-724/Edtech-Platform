@@ -4,8 +4,8 @@ A full-stack web application where instructors can create courses, and students 
 
 ## 🚀 Features (Ongoing Development)
 
-✅ Completed Features
-### User Authentication (Signup, Login, Logout)
+### ✅ Completed Features
+User Authentication (Signup, Login, Logout)
 Home Page & Course Browsing
 Course Details Page
 
