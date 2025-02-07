@@ -10,6 +10,11 @@ Home Page & Course Browsing <br />
 Course Details Page <br />
 Role-based access control (Instructor & Student)
 
+### ⏳ In Progress
+Instructor Dashboard (Manage Courses, Upload Content) <br />
+Student Dashboard (Track Enrolled Courses) <br />
+Razorpay Payment Integration <br />
+
 ## Tech Stack
 
 Frontend: React.js <br />
