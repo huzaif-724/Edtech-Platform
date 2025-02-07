@@ -2,6 +2,10 @@
 A full-stack web application where instructors can create courses, and students can purchase and enroll in courses. Includes video lectures, PDF notes, and a dashboard for both roles. <br />
 🚧 This project is currently under development. 🚧
 
+## 🚀 Project Status <br />
+✅ Backend – Completed (MERN stack with authentication, payment, and course management) <br />
+🚧 Frontend – Ongoing (Building the UI and integrating with the backend) <br />
+
 ## 🚀 Features (Ongoing Development)
 
 ### ✅ Completed Features
