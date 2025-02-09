@@ -31,7 +31,7 @@ const AllCourses = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          withCredentials: true, // Send cookies with request
+          withCredentials: true, 
         });
 
         console.log("response :>> ", response);
@@ -45,7 +45,7 @@ const AllCourses = () => {
         console.log(
           "Fechting courses error............",
           error.response || error
-        ); // Log the full error response
+        );
         toast.error(error.response?.data?.message || "Could Not Fetch Courses");
       }
 

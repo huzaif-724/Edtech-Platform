@@ -62,11 +62,6 @@ const Navbar = () => {
             </>
           )}
         </div>
-
-        {/* Mobile Menu Button */}
-        {/* <button className="block md:hidden">
-          <AiOutlineMenu fontSize={24} />
-        </button> */}
       </div>
     </div>
   );
