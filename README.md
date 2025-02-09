@@ -6,7 +6,7 @@ A full-stack web application where instructors can create courses, and students 
 ## 🚀 Project Status <br />
 ✅ Backend – Completed (MERN stack with authentication, payment, and course management) <br />
 🚧 Frontend – Ongoing (Building the UI and integrating with the backend) <br />
-
+ 
 ## 🚀 Features (Ongoing Development)
 
 ### ✅ Completed Features
