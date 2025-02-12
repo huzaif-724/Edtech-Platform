@@ -53,10 +53,10 @@ const Login = () => {
         throw new Error(response.data.message);
       }
 
-      console.log("response :>> ", response);
+      console.log("response :>> ", response.data.user);
 
       dispatch(setToken(response.data.token));
-      dispatch(setUser(response.data));
+      dispatch(setUser(response.data.user));
 
       toast.success("Logged In");
       navigate("/allCourses");

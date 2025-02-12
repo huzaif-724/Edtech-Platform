@@ -22,9 +22,9 @@ const Home = () => {
           {/* Share Button */}
           <button
             onClick={() => navigate("/login")}
-            className="flex items-center justify-center gap-3 w-[170px] px-4 py-2 rounded-lg border border-white bg-richblack-800 text-white text-xl hover:bg-richblack-700 transition duration-300 mx-auto md:mx-0"
+            className="flex items-center justify-center gap-3 w-[160px] px-4 py-2 rounded-lg border border-white bg-richblack-800 text-white text-xl hover:bg-richblack-700 transition duration-300 mx-auto md:mx-0"
           >
-            <span className="bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text">
+            <span className="bg-gradient-to-b from-[#1FA2FF] text-[16px] via-[#12D8FA] to-[#A6FFCB] bg-clip-text">
               Learn More
             </span>
             <PiShareFatFill className="text-white" />

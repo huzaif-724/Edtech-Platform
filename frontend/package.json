@@ -9,6 +9,7 @@
     "copy-to-clipboard": "^3.3.3",
     "cors": "^2.8.5",
     "cra-template": "1.2.0",
+    "framer-motion": "^12.4.1",
     "react": "^19.0.0",
     "react-crud-icons": "^1.2.3",
     "react-dom": "^19.0.0",

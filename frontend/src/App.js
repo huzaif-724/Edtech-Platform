@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import VerifyEmail from "./pages/VerifyEmail";
 import AllCourses from "./pages/AllCourse";
 import CourseDetails from "./pages/CourseDetails";
+import MyCourses from "./pages/instructor/MyCourses";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           <Route path="/verify-email" element={<VerifyEmail/>}/>
           <Route path="/allCourses" element={<AllCourses/>}/>
           <Route path="courses/:courseId" element={<CourseDetails />} />
+          <Route path="dashboard/my-courses" element={<MyCourses />} />
+
         </Routes>
         
        </div>

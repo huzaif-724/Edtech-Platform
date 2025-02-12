@@ -56,14 +56,10 @@ const AllCourses = () => {
   }, []);
 
   return (
-    <div className="bg-richblack-900 min-h-screen flex flex-col items-center px-4 py-8">
+    <div className="bg-richblack-900 min-h-screen w-[90%] mx-auto flex flex-col items-center px-4 py-8">
       <div
-        className={`grid w-full max-w-7xl mt-28 gap-x-12 gap-y-10 
-      ${
-        courses.length === 1
-          ? "grid-cols-1 place-items-center" // Center single course
-          : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" // Normal grid for multiple
-      }`}
+        className= " flex flex-col gap-10 pt-36 lg:flex-row flex-wrap "
+      
       >
         {/* Rendering Courses */}
         {courses.map((course) => (

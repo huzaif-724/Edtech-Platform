@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const CourseCard = ({ title, category, price, thumbnail, instructor, courseId}) => {
   return (
-    <Link to={`/courses/${courseId}`} className="block w-full">
-      <div className="bg-richblack-800 w-[290px] h-[370px] lg:w-[300px]  text-white rounded-xl shadow-md overflow-hidden transition-transform transform hover:scale-105">
+    <Link to={`/courses/${courseId}`} >
+      <div className="bg-richblack-800 w-[300px] h-[370px]  text-white rounded-xl shadow-md overflow-hidden transition-transform transform hover:scale-105">
         {/* Course Thumbnail */}
         <img
           src={thumbnail}
@@ -16,7 +16,7 @@ const CourseCard = ({ title, category, price, thumbnail, instructor, courseId}) 
 
         {/* Course Details */}
         <div className="p-4">
-          <h2 className="text-base font-semibold line-clamp-2">The Complete Python Bootcamp From Zero To Hero</h2>
+          <h2 className="text-base font-semibold line-clamp-2">{title}</h2>
           <p className="text-sm text-[#838894] line-clamp-2 mt-1">
             Category : {category}
           </p>
