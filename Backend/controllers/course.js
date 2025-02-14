@@ -13,7 +13,7 @@ exports.createCourse = async (req, res) =>{
 
         const userId = req.user.id;
         const {title, description, price, whatYouWillLearn, tag, category} = req.body;
-        const thumbnail = req.files.thumbnailImage;
+        const thumbnail = req.files?.thumbnail;
 
         if(!title || !description || !price || !whatYouWillLearn || !tag || !category || !thumbnail)
         {

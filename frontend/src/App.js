@@ -7,6 +7,7 @@ import VerifyEmail from "./pages/VerifyEmail";
 import AllCourses from "./pages/AllCourse";
 import CourseDetails from "./pages/CourseDetails";
 import MyCourses from "./pages/instructor/MyCourses";
+import AddCourse from "./pages/instructor/AddCourse";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/allCourses" element={<AllCourses/>}/>
           <Route path="courses/:courseId" element={<CourseDetails />} />
           <Route path="dashboard/my-courses" element={<MyCourses />} />
+          <Route path="dashboard/add-course" element={<AddCourse />} />
 
         </Routes>
         

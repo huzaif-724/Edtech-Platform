@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import courseImg from "../assets/course.jpg";
 import { FiEdit2 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { formatDate } from "../utils/formateDate";
+import { formatDate } from "../../utils/formateDate";
 
 const InstructorCourseCard = ({course,}) => {
   const TRUNCATE_LENGTH = 30;

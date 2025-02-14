@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { VscAdd } from "react-icons/vsc"
-import InstructorCourseCard from "../../components/InstructorCourseCard";
+import InstructorCourseCard from "../../components/Instructor/InstructorCourseCard";
+import InstructorCourseCardSmall from "../../components/Instructor/InstructorCourseCardSmall";
 
 const {GET_INSTRUCTOR_COURSES} = endpoints;
 
@@ -85,7 +86,7 @@ const MyCourses = () => {
 
                                 <InstructorCourseCard 
                                 key={course._id}
-                                course = {course}
+                                course={course}
                                 />
 
                             ))
@@ -107,14 +108,13 @@ const MyCourses = () => {
         {
                 courses.length > 0 ? (
 
-                    <div className="flex justify-center items-center flex-col mt-10"> 
+                    <div className="flex justify-center items-center flex-col mt-10 gap-10"> 
                         {
                             courses.map((course)=>(
 
-                                <InstructorCourseCard 
+                                <InstructorCourseCardSmall 
                                 key={course._id}
                                 course = {course}
-                                large = {true}
                                 />
 
                             ))
@@ -124,7 +124,7 @@ const MyCourses = () => {
                 ):
                 (
                     <p className="text-richblack-200 text-2xl mt-48 text-center ">
-                        Looks like you haven’t created any courses yet. Get started today!
+                        Looks like you haven't created any courses yet. Get started today!
                     </p>
                 )
                     
