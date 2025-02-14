@@ -8,6 +8,9 @@ import AllCourses from "./pages/AllCourse";
 import CourseDetails from "./pages/CourseDetails";
 import MyCourses from "./pages/instructor/MyCourses";
 import AddCourse from "./pages/instructor/AddCourse";
+import CreateSection from "./pages/instructor/CreateSection";
+
+
 
 function App() {
   return (
@@ -21,9 +24,10 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/verify-email" element={<VerifyEmail/>}/>
           <Route path="/allCourses" element={<AllCourses/>}/>
-          <Route path="courses/:courseId" element={<CourseDetails />} />
-          <Route path="dashboard/my-courses" element={<MyCourses />} />
-          <Route path="dashboard/add-course" element={<AddCourse />} />
+          <Route path="/courses/:courseId" element={<CourseDetails />} />
+          <Route path="/dashboard/my-courses" element={<MyCourses />} />
+          <Route path="/dashboard/add-course" element={<AddCourse />} />
+          <Route path="/dashboard/add-section" element={<CreateSection/>} />
 
         </Routes>
         

@@ -2,10 +2,7 @@ import axios from "axios";
 import { endpoints } from "./api";
 import toast from "react-hot-toast";
 
-
 const { GET_ALL_CATEGORIES, CREATE_COURSE_API } = endpoints;
-
-
 
 export const fetchCategories = async () => {
   let result = [];
@@ -22,34 +19,37 @@ export const fetchCategories = async () => {
 
     // console.log("result :>> ", result);
   } catch (error) {
-    console.log("COURSE_CATEGORY_API API ERROR............", error)
+    console.log("COURSE_CATEGORY_API API ERROR............", error);
   }
 
   return result;
 };
 
-export const createCourse = async (token, formData)=>{
-    try{
+export const createCourse = async (token, formData) => {
+  const toastId = toast.loading("Loading...")
+  let result = null;
+  try {
+    const response = await axios.post(CREATE_COURSE_API, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+      withCredentials: true,
+    });
 
-        const response = await axios.post(CREATE_COURSE_API,
-            formData,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "multipart/form-data",
-                },
-                withCredentials: true,
-            }
-        );
-
-        console.log('response :>> ', response);
-
-        
-
+    if (!response.data.success) {
+      throw new Error(response.data.message);
     }
-    catch(error)
-    {
-        console.log('error :>> ', error);
 
-    }
-}
+    toast.success("Course Details Added Successfully")
+    result = response?.data;
+    
+
+  } catch (error) {
+    console.log("error :>> ", error);
+    toast.error(error.message)
+  }
+
+  toast.dismiss(toastId)
+  return result;
+};

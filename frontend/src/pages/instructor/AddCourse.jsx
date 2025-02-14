@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
-import {fetchCategories, createCourse} from "../../services/courseAPI";
-import { useSelector } from "react-redux";
+import { fetchCategories, createCourse } from "../../services/courseAPI";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setCourse } from "../../slices/courseSlice";
 
 const AddCourse = () => {
-  const token = useSelector((state)=> state.auth.token)
+  const navigate = useNavigate();
+  const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
+
   const [categories, setCategories] = useState([]);
   const [thumbnailImage, setThumbnail] = useState(null);
   const [preview, setPreview] = useState("");
@@ -19,20 +24,19 @@ const AddCourse = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetchCategories();
-      console.log("result :>> ", result);
+      // console.log("result :>> ", result);
       setCategories(result);
     };
 
     fetchData();
   }, []);
 
-  console.log("categories :>> ", categories);
+  // console.log("categories :>> ", categories);
 
   const { title, description, tag, price, category, whatYouWillLearn } =
     courseData;
 
-  const handleOnSubmit = async(e) => {
-
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
@@ -43,19 +47,15 @@ const AddCourse = () => {
     formData.append("category", courseData.category);
     formData.append("whatYouWillLearn", courseData.whatYouWillLearn);
     if (thumbnailImage) {
-      formData.append("thumbnail", thumbnailImage); 
+      formData.append("thumbnail", thumbnailImage);
     }
 
-    const res = await createCourse(token, formData)
+    const response = await createCourse(token, formData);
 
-
-
-    
-
-    
-
-
-    
+    if (response?.success) {
+      navigate("/dashboard/add-section");
+      dispatch(setCourse(response.data));
+    }
   };
 
   const handleOnChange = (e) => {
@@ -205,12 +205,12 @@ const AddCourse = () => {
             </label>
 
             {preview && (
-        <img
-          src={preview}
-          alt="Thumbnail Preview"
-          className="w-[300px] h-[150px] mx-auto object-cover mt-2 rounded-md"
-        />
-      )}
+              <img
+                src={preview}
+                alt="Thumbnail Preview"
+                className="w-[300px] h-[150px] mx-auto object-cover mt-2 rounded-md"
+              />
+            )}
 
             {/* Email */}
             <label>
