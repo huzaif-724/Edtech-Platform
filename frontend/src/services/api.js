@@ -20,7 +20,10 @@ export const endpoints = {
 
   //section
   ADD_SECTION_API : BASE_URL +"/course/createSection",
-  DELETE_SECTION_API : BASE_URL + "/course/deleteSection"
+  DELETE_SECTION_API : BASE_URL + "/course/deleteSection",
+
+  //SubSection
+  CREATE_SUBSECTION_API : BASE_URL + "/course/createSubSection",
   
   
 

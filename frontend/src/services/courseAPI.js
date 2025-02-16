@@ -8,7 +8,8 @@ const {
   GET_ALL_CATEGORIES, 
   CREATE_COURSE_API, 
   ADD_SECTION_API,
-  DELETE_SECTION_API 
+  DELETE_SECTION_API,
+  CREATE_SUBSECTION_API
 } = endpoints;
 
 export const fetchCategories = async () => {
@@ -122,4 +123,38 @@ export const deleteSection = async(sectionId, courseId, token)=>{
     toast.error(error.message);
   }
   toast.dismiss(toastId);
+}
+
+
+
+export const addSubsection = async (formData, token)=>{
+   const toastId = toast.loading("Loading...");
+   let result = null;
+
+   try{
+
+    const response = await axios.post(CREATE_SUBSECTION_API, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+      withCredentials: true,
+    });
+
+    console.log('response :>> ', response);
+
+    if (!response.data.success) {
+      throw new Error(response.data.message);
+    }
+    toast.success("Lecture Added Successfully");
+    result = response;
+
+   }
+   catch(error)
+   {
+     console.log('error :>> ', error);
+     toast.error(error.message);
+   }
+   toast.dismiss(toastId);
+   return result;
 }

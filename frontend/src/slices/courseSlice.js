@@ -16,7 +16,7 @@ const courseSlice = createSlice({
             state.sections = action.payload
         },
         updateSection: (state, action) => {
-            const index = state.sections.findIndex(sec => sec.id === action.payload.id);
+            const index = state.sections.findIndex(sec => sec._id === action.payload._id);
             if (index !== -1) {
                 state.sections[index] = { ...state.sections[index], ...action.payload };
             }

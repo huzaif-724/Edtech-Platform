@@ -43,6 +43,8 @@ const CreateSection = () => {
 
     const response = await createSection(sectionName, courseId, token);
 
+    console.log('response :>> ', response);
+
     dispatch(setSections(response.data.updatedCourse.courseContent));
 
     setSection({ sectionName: "" });
@@ -100,7 +102,7 @@ const CreateSection = () => {
             onSubmit={submitHandler}
             className="flex flex-col gap-y-6 mt-6  "
           >
-            {/* Email */}
+            
             <label>
               <p className="text-sm font-medium text-richblack-5 mb-2">
                 Section Name <sup className="text-pink-200">*</sup>
