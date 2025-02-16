@@ -2,7 +2,14 @@ import axios from "axios";
 import { endpoints } from "./api";
 import toast from "react-hot-toast";
 
-const { GET_ALL_CATEGORIES, CREATE_COURSE_API } = endpoints;
+
+
+const { 
+  GET_ALL_CATEGORIES, 
+  CREATE_COURSE_API, 
+  ADD_SECTION_API,
+  DELETE_SECTION_API 
+} = endpoints;
 
 export const fetchCategories = async () => {
   let result = [];
@@ -25,8 +32,10 @@ export const fetchCategories = async () => {
   return result;
 };
 
+
+
 export const createCourse = async (token, formData) => {
-  const toastId = toast.loading("Loading...")
+  const toastId = toast.loading("Loading...");
   let result = null;
   try {
     const response = await axios.post(CREATE_COURSE_API, formData, {
@@ -41,15 +50,76 @@ export const createCourse = async (token, formData) => {
       throw new Error(response.data.message);
     }
 
-    toast.success("Course Details Added Successfully")
+    toast.success("Course Details Added Successfully");
     result = response?.data;
-    
-
   } catch (error) {
     console.log("error :>> ", error);
-    toast.error(error.message)
+    toast.error(error.message);
   }
 
-  toast.dismiss(toastId)
+  toast.dismiss(toastId);
   return result;
 };
+
+export const createSection = async (sectionName, courseId, token) => {
+  let result = null;
+  const toastId = toast.loading("Loading...");
+
+  try {
+    const response = await axios.post(
+      ADD_SECTION_API,
+      {
+        sectionName,
+        courseId,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      }
+    );
+
+    if (!response.data.success) {
+      throw new Error(response.data.message);
+    }
+
+    toast.success("Section Added Successfully");
+    result = response;
+    
+  } catch (error) {
+    console.log("error :>> ", error);
+  }
+
+  toast.dismiss(toastId);
+  return result;
+};
+
+
+export const deleteSection = async(sectionId, courseId, token)=>{
+  const toastId = toast.loading("Loading...");
+  try{
+
+    const response = await axios.post(DELETE_SECTION_API, 
+      {sectionId, courseId},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      }
+    )
+
+    if (!response.data.success) {
+      throw new Error(response.data.message);
+    }
+    toast.success("Section Deleted Successfully");
+
+  }
+  catch(error)
+  {
+    console.log('error :>> ', error);
+    toast.error(error.message);
+  }
+  toast.dismiss(toastId);
+}
