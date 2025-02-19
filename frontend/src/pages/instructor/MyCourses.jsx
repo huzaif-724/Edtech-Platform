@@ -30,7 +30,7 @@ const MyCourses = () => {
     };
 
     fetchCourses();
-  }, []);
+  }, [navigate]);
 
   const deleteHandler = (courseId) => {
     setCourses((prev) => prev.filter((course) => course._id !== courseId));

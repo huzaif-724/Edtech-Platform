@@ -101,7 +101,7 @@ const CourseDetails = () => {
   };
 
   return (
-    <div>
+    <div className=" min-h-screen">
       <div className={`relative w-full bg-richblack-800`}>
         {/* Hero Section */}
         <div className="mx-auto box-content px-4 lg:w-[1260px] 2xl:relative ">

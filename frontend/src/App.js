@@ -9,6 +9,7 @@ import CourseDetails from "./pages/CourseDetails";
 import MyCourses from "./pages/instructor/MyCourses";
 import AddCourse from "./pages/instructor/AddCourse";
 import CreateSection from "./pages/instructor/CreateSection";
+import PublishCourse from "./pages/instructor/PublishCourse";
 
 
 
@@ -28,7 +29,7 @@ function App() {
           <Route path="/dashboard/my-courses" element={<MyCourses />} />
           <Route path="/dashboard/add-course" element={<AddCourse />} />
           <Route path="/dashboard/add-section" element={<CreateSection/>} />
-
+          <Route path="/dashboard/publish-course" element={<PublishCourse/>} />
         </Routes>
         
        </div>

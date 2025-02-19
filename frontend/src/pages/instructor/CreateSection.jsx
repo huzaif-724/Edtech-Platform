@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import InstructorSection from "../../components/Instructor/InstructorSection";
 import { removeSection, setSections } from "../../slices/courseSlice";
+import { MdNavigateNext } from "react-icons/md";
 
 const CreateSection = () => {
   const courseDetails = useSelector((state) => state.course.course);
@@ -116,12 +117,23 @@ const CreateSection = () => {
               />
             </label>
 
-            <button
+           <div className=" flex justify-between">
+           <button
               type="submit"
-              className="bg-[#161D29] w-[170px] text-[#FFD60A] border border-[#FFD60A] flex justify-between items-center font-medium py-4 px-4 rounded-md  transition-all"
+              className="bg-[#161D29] w-[170px] text-[#FFD60A] border border-[#FFD60A] flex justify-between items-center  font-medium py-4 px-4 rounded-md  transition-all"
             >
               <FaPlus /> <p>Create Section</p>
             </button>
+
+            <button
+              
+              className="bg-[#161D29] w-[100px] text-[#FFD60A] border border-[#FFD60A] flex justify-between items-center h-[50px] font-medium py-4 px-4 rounded-md  transition-all"
+              onClick={()=> navigate("/dashboard/publish-course")}
+            >
+              <p>Next</p> <MdNavigateNext />
+            </button>
+           </div>
+
           </form>
         </div>
 
