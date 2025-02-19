@@ -65,7 +65,7 @@ const InstructorCourseCard = ({ course, token, onDelete }) => {
 
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className=" p-6 rounded-lg border rounded-xl text-white bg-richblack-800 w-[80%] max-w-lg h-[35vh] relative overflow-hidden">
+          <div className=" p-6 border rounded-xl text-white bg-richblack-800 w-[80%] max-w-lg h-[35vh] relative overflow-hidden">
             <h1 className="text-2xl font-bold text-gray-800">
               Confirm Deletion{" "}
             </h1>
