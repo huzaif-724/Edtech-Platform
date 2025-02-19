@@ -28,7 +28,6 @@ body {
   padding: 8px 20px;
   font-weight: 600; /* Equivalent to font-semibold */
   color: #000814; /* Equivalent to text-richblack-900 */
-  
 }
 
 .input-custom {
@@ -43,6 +42,21 @@ body {
 
 .CTAbutton:hover {
   background-color: #161D29; /* Slightly darker yellow */
+  transform: scale(1.05);
+  color: #f1ea5c; /* Slight scaling effect */
+}
+
+.CTAbuttonModal {
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: #f2e937; /* Equivalent to bg-yellow-50 */
+  padding: 8px 20px;
+  font-weight: 600; /* Equivalent to font-semibold */
+  color: #000814; /* Equivalent to text-richblack-900 */
+}
+
+.CTAbuttonModal:hover {
+  background-color: #000209; /* Slightly darker yellow */
   transform: scale(1.05);
   color: #f1ea5c; /* Slight scaling effect */
 }

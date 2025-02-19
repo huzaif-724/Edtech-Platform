@@ -43,19 +43,18 @@ const CreateSection = () => {
 
     const response = await createSection(sectionName, courseId, token);
 
-    console.log('response :>> ', response);
+    if (response.status === 200) {
+      console.log("response :>> ", response);
 
-    dispatch(setSections(response.data.updatedCourse.courseContent));
+      dispatch(setSections(response.data.updatedCourse.courseContent));
 
-    setSection({ sectionName: "" });
+      setSection({ sectionName: "" });
+    }
   };
 
-  const deleteHandler = (sectionId)=>{
-
+  const deleteHandler = (sectionId) => {
     dispatch(removeSection(sectionId));
-
-  }
- 
+  };
 
   return (
     <div className=" min-h-screen flex flex-col h-auto pt-20 mt-12 mx-auto w-[90%]     gap-5  ">
@@ -91,9 +90,9 @@ const CreateSection = () => {
                   sectionId={sec._id}
                   name={sec.sectionName}
                   subsections={sec.subSection}
-                  onDelete = {deleteHandler}
-                  courseId = {courseId}
-                  token = {token}
+                  onDelete={deleteHandler}
+                  courseId={courseId}
+                  token={token}
                 />
               ))}
           </div>
@@ -102,7 +101,6 @@ const CreateSection = () => {
             onSubmit={submitHandler}
             className="flex flex-col gap-y-6 mt-6  "
           >
-            
             <label>
               <p className="text-sm font-medium text-richblack-5 mb-2">
                 Section Name <sup className="text-pink-200">*</sup>

@@ -7,6 +7,7 @@ import axios from "axios";
 import { VscAdd } from "react-icons/vsc";
 import InstructorCourseCard from "../../components/Instructor/InstructorCourseCard";
 import InstructorCourseCardSmall from "../../components/Instructor/InstructorCourseCardSmall";
+import { fetchInstructorCourses } from "../../services/courseAPI";
 
 const { GET_INSTRUCTOR_COURSES } = endpoints;
 
@@ -22,38 +23,20 @@ const MyCourses = () => {
   }, []);
 
   useEffect(() => {
-    const toastId = toast.loading("Loading...");
-
     const fetchCourses = async () => {
-      try {
-        const response = await axios.get(GET_INSTRUCTOR_COURSES, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          withCredentials: true,
-        });
+      const result = await fetchInstructorCourses(token);
 
-        console.log("response", response);
-
-        if (!response.data.success) {
-          throw new Error(response.data.message);
-        }
-        setCourses(response.data.data);
-      } catch (error) {
-        console.log(
-          "Fechting courses error............",
-          error.response || error
-        );
-        toast.error(error.response?.data?.message || "Could Not Fetch Courses");
-      }
-
-      toast.dismiss(toastId);
+      setCourses(result);
     };
 
     fetchCourses();
   }, []);
 
-  console.log("courses :>> ", courses);
+  const deleteHandler = (courseId) => {
+    setCourses((prev) => prev.filter((course) => course._id !== courseId));
+  };
+
+  // console.log("courses :>> ", courses);
 
   return (
     <div className=" w-full flex justify-center items-center">
@@ -76,7 +59,12 @@ const MyCourses = () => {
           {courses.length > 0 ? (
             <div className="flex justify-center items-center flex-col mt-10">
               {courses.map((course) => (
-                <InstructorCourseCard key={course._id} course={course} />
+                <InstructorCourseCard
+                  key={course._id}
+                  course={course}
+                  token={token}
+                  onDelete={deleteHandler}
+                />
               ))}
             </div>
           ) : (
@@ -90,7 +78,12 @@ const MyCourses = () => {
           {courses.length > 0 ? (
             <div className="flex justify-center items-center flex-col mt-10 gap-10">
               {courses.map((course) => (
-                <InstructorCourseCardSmall key={course._id} course={course} />
+                <InstructorCourseCardSmall
+                  key={course._id}
+                  course={course}
+                  token={token}
+                  onDelete={deleteHandler}
+                />
               ))}
             </div>
           ) : (

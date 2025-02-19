@@ -1,10 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
-const CourseCard = ({ title, category, price, thumbnail, instructor, courseId}) => {
+const CourseCard = ({
+  title,
+  category,
+  price,
+  thumbnail,
+  instructor,
+  courseId,
+}) => {
   return (
-    <Link to={`/courses/${courseId}`} >
+    <Link to={`/courses/${courseId}`}>
       <div className="bg-richblack-800 w-[300px] h-[370px]  text-white rounded-xl shadow-md overflow-hidden transition-transform transform hover:scale-105">
         {/* Course Thumbnail */}
         <img

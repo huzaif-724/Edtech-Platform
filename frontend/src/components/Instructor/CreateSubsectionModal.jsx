@@ -1,27 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useState } from "react";
-import { addSubsection } from "../../services/courseAPI"
+import { addSubsection } from "../../services/courseAPI";
 import { useSelector, useDispatch } from "react-redux";
 import { updateSection } from "../../slices/courseSlice";
+import { editSubsection } from "../../services/courseAPI";
+import { MdOutlineCloudUpload } from "react-icons/md";
 
-const CreateSubsectionModel = ({ isModalOpen, closeModal, sectionId}) => {
-
+const CreateSubsectionModel = ({
+  isModalOpen,
+  closeModal,
+  sectionId,
+  existingSubsection,
+}) => {
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
 
-  const [subSectionData, setSubSectionData] = useState(
-    {
-        title : "",
-        description : "",
-    }
-  );
+  const [subSectionData, setSubSectionData] = useState({
+    title: "",
+    description: "",
+  });
   const [video, setVideo] = useState(null);
 
-  const {title, description} = subSectionData;
+  useEffect(() => {
+    if (existingSubsection) {
+      setSubSectionData({
+        title: existingSubsection.title || "",
+        description: existingSubsection.description || "",
+      });
+
+      setVideo(existingSubsection.video || null);
+    }
+  }, [existingSubsection]);
+
+  const { title, description } = subSectionData;
 
   const handleFileChange = (event) => {
-    const file = event.target.files[0]; 
+    const file = event.target.files[0];
     if (file) {
       setVideo(file);
     }
@@ -33,38 +48,46 @@ const CreateSubsectionModel = ({ isModalOpen, closeModal, sectionId}) => {
       [e.target.name]: e.target.value,
     }));
   };
- 
-  const submitHandler = async (e)=>{
 
+  const submitHandler = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
     formData.append("title", subSectionData.title);
     formData.append("description", subSectionData.description);
-    formData.append("sectionId", sectionId)
+    formData.append("sectionId", sectionId);
 
     if (video) {
-        formData.append("video", video);
+      formData.append("video", video);
     }
 
-    const response = await addSubsection(formData, token)
+    let response;
 
-    if(response.data.success)
-    {
+    if (existingSubsection) {
+      formData.append("subSectionId", existingSubsection.subSectionId);
+      response = await editSubsection(formData, token);
+    } else {
+      response = await addSubsection(formData, token);
+    }
+
+    if (response?.data.success) {
       dispatch(updateSection(response?.data?.data));
     }
 
     closeModal();
 
-  }
- 
-
+    setSubSectionData({
+      title: "",
+      description: "",
+    });
+    setVideo(null);
+  };
 
   return (
     <div>
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className=" p-6 rounded-lg shadow-[0_5px_15px_rgba(255,_255,_255,_0.5)] text-white bg-richblack-900 w-[90%] max-w-lg h-[70vh] relative overflow-hidden">
+          <div className=" p-6 rounded-xl  text-white bg-black w-[90%] border max-w-lg h-[70vh] relative overflow-hidden">
             <button
               onClick={closeModal}
               className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
@@ -100,7 +123,7 @@ const CreateSubsectionModel = ({ isModalOpen, closeModal, sectionId}) => {
                   name="title"
                   value={title}
                   onChange={onChangeHandler}
-                  placeholder="Add a section to build your course"
+                  placeholder="Enter Lecture Title"
                   className="form-input w-full border border-richblack-600 bg-richblack-700 text-richblack-200 rounded-md px-4 py-2 focus:ring-2 focus:ring-yellow-50"
                 />
               </label>
@@ -116,7 +139,7 @@ const CreateSubsectionModel = ({ isModalOpen, closeModal, sectionId}) => {
                   name="description"
                   value={description}
                   onChange={onChangeHandler}
-                  placeholder="Add a section to build your course"
+                  placeholder="Enter Lecture Description"
                   className="form-input w-full border border-richblack-600 bg-richblack-700 text-richblack-200 rounded-md px-4 py-2 focus:ring-2 focus:ring-yellow-50"
                 />
               </label>
@@ -125,7 +148,7 @@ const CreateSubsectionModel = ({ isModalOpen, closeModal, sectionId}) => {
                 type="submit"
                 className="bg-[#161D29] w-[170px] text-[#FFD60A] border border-[#FFD60A] flex justify-between items-center font-medium py-4 px-4 rounded-md  transition-all"
               >
-                <FaPlus /> <p>Create Section</p>
+                <MdOutlineCloudUpload /> <p>Upload Lecture</p>
               </button>
             </form>
           </div>

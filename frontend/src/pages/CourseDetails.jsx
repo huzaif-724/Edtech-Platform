@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { isAction } from "@reduxjs/toolkit";
 import { formatDate } from "../utils/formateDate";
-import CourseDetailsCard from "../components/CourseDetailsCard"
+import CourseDetailsCard from "../components/CourseDetailsCard";
 
 const { GET_COURSE_DETAILS } = endpoints;
 
@@ -147,20 +147,22 @@ const CourseDetails = () => {
               <p className="space-x-3 pb-4 text-3xl font-semibold text-richblack-5">
                 Rs. {course?.price}
               </p>
-              <button className="cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900" onClick={handleBuyCourse}>
+              <button
+                className="cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900"
+                onClick={handleBuyCourse}
+              >
                 Buy Now
               </button>
             </div>
           </div>
-           {/* Courses Card */}
-           <div className="right-[1rem] top-[60px] mx-auto hidden min-h-[600px] w-1/3 max-w-[410px] translate-y-24 md:translate-y-0 lg:absolute  lg:block">
+          {/* Courses Card */}
+          <div className="right-[1rem] top-[60px] mx-auto hidden min-h-[600px] w-1/3 max-w-[410px] translate-y-24 md:translate-y-0 lg:absolute  lg:block">
             <CourseDetailsCard
               course={course}
               // setConfirmationModal={setConfirmationModal}
               handleBuyCourse={handleBuyCourse}
             />
           </div>
-
         </div>
       </div>
 

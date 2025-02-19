@@ -1,20 +1,18 @@
-import React from "react"
-import { BsFillCaretRightFill } from "react-icons/bs"
-import { FaShareSquare } from "react-icons/fa"
-import copy from "copy-to-clipboard"
-import { toast } from "react-hot-toast"
-import { useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
+import React from "react";
+import { BsFillCaretRightFill } from "react-icons/bs";
+import { FaShareSquare } from "react-icons/fa";
+import copy from "copy-to-clipboard";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const CourseDetailsCard = ({course, handleBuyCourse}) => {
-
-    const navigate = useNavigate()
-    const user = useSelector((value)=> value.auth.user)
-    const handleShare = () => {
-        copy(window.location.href)
-        toast.success("Link copied to clipboard")
-      }
-
+const CourseDetailsCard = ({ course, handleBuyCourse }) => {
+  const navigate = useNavigate();
+  const user = useSelector((value) => value.auth.user);
+  const handleShare = () => {
+    copy(window.location.href);
+    toast.success("Link copied to clipboard");
+  };
 
   return (
     <>
@@ -34,7 +32,7 @@ const CourseDetailsCard = ({course, handleBuyCourse}) => {
           </div>
           <div className="flex flex-col gap-4">
             <button
-              className="cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900" 
+              className="cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900"
               onClick={
                 user && course?.studentsEnroled?.includes(user?._id)
                   ? () => navigate("/dashboard/enrolled-courses")
@@ -45,8 +43,8 @@ const CourseDetailsCard = ({course, handleBuyCourse}) => {
                 ? "Go To Course"
                 : "Buy Now"}
             </button>
-        </div>
-        <div>
+          </div>
+          <div>
             <p className="pb-3 pt-6 text-center text-sm text-richblack-25">
               30-Day Money-Back Guarantee
             </p>
@@ -56,15 +54,13 @@ const CourseDetailsCard = ({course, handleBuyCourse}) => {
               This Course Includes :
             </p>
             <div className="flex flex-col gap-3 text-sm text-caribbeangreen-100">
-
-                  <p className={`flex gap-2 flex-col`}>
-                    {/* <BsFillCaretRightFill /> */}
-                    <p>8 hours on-demand video</p>
-                    <p>Full Lifetime access</p>
-                    <p>Access on Mobile and TV</p>
-                    <p>Certificate of completion</p>
-                  </p>
-        
+              <p className={`flex gap-2 flex-col`}>
+                {/* <BsFillCaretRightFill /> */}
+                <p>8 hours on-demand video</p>
+                <p>Full Lifetime access</p>
+                <p>Access on Mobile and TV</p>
+                <p>Certificate of completion</p>
+              </p>
             </div>
           </div>
           <div className="text-center">
@@ -77,8 +73,8 @@ const CourseDetailsCard = ({course, handleBuyCourse}) => {
           </div>
         </div>
       </div>
-      </>
-  )
+    </>
+  );
 };
 
 export default CourseDetailsCard;

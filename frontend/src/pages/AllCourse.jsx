@@ -13,14 +13,11 @@ const AllCourses = () => {
   const token = useSelector((value) => value.auth.token);
   const navigate = useNavigate();
 
-  useEffect(()=>{
-
-    if(token === null)
-    {
-       navigate("/login")
+  useEffect(() => {
+    if (token === null) {
+      navigate("/login");
     }
-
-  }, [])
+  }, []);
 
   useEffect(() => {
     const toastId = toast.loading("Loading...");
@@ -31,7 +28,7 @@ const AllCourses = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          withCredentials: true, 
+          withCredentials: true,
         });
 
         console.log("response :>> ", response);
@@ -57,10 +54,7 @@ const AllCourses = () => {
 
   return (
     <div className="bg-richblack-900 min-h-screen w-[90%] mx-auto flex flex-col items-center px-4 py-8">
-      <div
-        className= " flex flex-col gap-10 pt-36 lg:flex-row flex-wrap "
-      
-      >
+      <div className=" flex flex-col gap-10 pt-36 lg:flex-row flex-wrap ">
         {/* Rendering Courses */}
         {courses.map((course) => (
           <CourseCard

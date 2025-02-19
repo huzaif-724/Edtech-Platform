@@ -9,14 +9,15 @@ const Home = () => {
   return (
     <div className="bg-richblack-900 w-full h-screen flex justify-center items-center mt-12">
       <div className="relative mx-auto flex flex-col md:flex-row w-11/12 max-w-screen-xl items-center justify-between gap-8 text-white">
-        
         {/* Left Section - Text & Button */}
         <div className="text-center md:text-left space-y-6">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text">
-          Unlock your coding potential with our online courses.
+            Unlock your coding potential with our online courses.
           </h1>
           <p className="text-lg text-richblack-200">
-          Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you.
+            Our courses are designed and taught by industry experts who have
+            years of experience in coding and are passionate about sharing their
+            knowledge with you.
           </p>
 
           {/* Share Button */}
