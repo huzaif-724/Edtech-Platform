@@ -305,20 +305,21 @@ exports.deleteCourse = async (req, res) => {
 exports.getEnrolledCourses = async (req, res) =>{
 
    try{
-        const userId = req.user.id
-        let userDetails = await User.findOne({
-        _id: userId,
-        })
-        .populate({
-            path: "courses",
-            populate: {
-            path: "courseContent",
-            populate: {
-                path: "subSection",
-            },
-            },
-        })
-        .exec()
+    
+        const userId = req.user.id;
+        let userDetails = await User.findOne({ _id: userId })
+            .populate({
+                path: "courses",
+                populate: [
+                    {
+                        path: "courseContent",
+                        populate: { path: "subSection" }
+                    },
+                    { path: "instructor" }
+                ]
+            })
+            .exec();
+    
 
         if (!userDetails) {
             return res.status(400).json({
@@ -427,3 +428,42 @@ exports.getFullCourseDetails = async (req, res)=>{
   
 
 
+exports.erolledStudent = async( req, res)=>{
+
+    try{
+
+        const {courseId} = req.body;
+        const userId = req.user;
+
+        await Course.findByIdAndUpdate(courseId,
+            {
+                $push : {
+                    studentsEnroled : userId,
+                }
+             },
+             {new : true},   
+        )
+
+        await User.findByIdAndUpdate(userId,
+            {
+                $push : {
+                    courses : courseId,
+                }
+            },
+            {new : true}
+        )
+
+        return res.status(200).json({
+            success : true,
+            message : "Course enrolled Successfully"
+        })
+
+    }
+    catch(error)
+    {
+        return res.status(200).json({
+            success : true,
+            message : "Course enrolled Successfully"
+        })
+    }
+}
