@@ -11,6 +11,7 @@ import AddCourse from "./pages/instructor/AddCourse";
 import CreateSection from "./pages/instructor/CreateSection";
 import PublishCourse from "./pages/instructor/PublishCourse";
 import EnrolledCourses from "./pages/student/EnrolledCourses";
+import CourseContent from "./pages/student/CourseContent";
 
 
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/dashboard/publish-course" element={<PublishCourse/>} />
 
           <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses/>} />
+          <Route path="/dashboard/course-content/:courseId" element={<CourseContent/>} />
         </Routes>
         
        </div>

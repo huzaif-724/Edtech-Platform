@@ -12,12 +12,14 @@ export const endpoints = {
   GET_COURSE_DETAILS : BASE_URL + "/course/getCourseDetails",
   CREATE_COURSE_API : BASE_URL + "/course/createCourse",
   DELETE_COURSE_API : BASE_URL + "/course/deleteCourse",
+  GET_FULL_COURSE_DETAIL : BASE_URL + "/course/getFullCourseDetails",
 
   //instructor
   GET_INSTRUCTOR_COURSES : BASE_URL + "/course/getInstructorCourses",
 
   //student
   GET_ENROLLED_COURSES : BASE_URL + "/course/getEnrolledCourses",
+
 
   //category
   GET_ALL_CATEGORIES : BASE_URL + "/course/showAllCategories",

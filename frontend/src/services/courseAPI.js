@@ -14,6 +14,7 @@ const {
   UPDATE_SUBSECTION_API,
   UPDATE_SECTION_API,
   GET_ENROLLED_COURSES,
+  GET_FULL_COURSE_DETAIL,
 } = endpoints;
 
 //Course
@@ -103,6 +104,38 @@ export const getEnrolledCourses = async(token)=>{
   return result;
 
 }
+
+// Get Full Course Details
+
+export const fetchEnrolledCourse = async (courseId, token) => {
+  const toastId = toast.loading("Loading...");
+  let result;
+  try {
+
+    const response = await axios.get(GET_FULL_COURSE_DETAIL, {
+      params: { courseId },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+    
+
+    console.log("Enrolled Course Details Response:", response);
+
+    if (!response.data.success) {
+      throw new Error(response.data.message);
+    }
+
+    result = response;
+
+  } catch (error) {
+    console.log("Fetching course error:", error.response || error);
+    toast.error(error.response?.data?.message || "Could Not Fetch Course");
+  }
+  toast.dismiss(toastId);
+  return result;
+};
 
 // Delete Course
 export const deleteCourse = async (courseId, token) => {
