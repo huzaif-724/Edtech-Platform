@@ -16,6 +16,9 @@ export const endpoints = {
   //instructor
   GET_INSTRUCTOR_COURSES : BASE_URL + "/course/getInstructorCourses",
 
+  //student
+  GET_ENROLLED_COURSES : BASE_URL + "/course/getEnrolledCourses",
+
   //category
   GET_ALL_CATEGORIES : BASE_URL + "/course/showAllCategories",
 
