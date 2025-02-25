@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { AiOutlineDown } from "react-icons/ai";
 import StudentSubSection from "./StudentSubSection";
 
-const Section = ({ section, isActive, handleActive, handleVideoClick }) => {
+const Section = ({ section, isActive, handleActive, handleVideoClick, selectedSubSec }) => {
   const contentEl = useRef(null);
   const [active, setActive] = useState(false);
   useEffect(() => {
@@ -50,6 +50,7 @@ const Section = ({ section, isActive, handleActive, handleVideoClick }) => {
                 subSec={subSec}
                 key={i}
                 handleVideoClick={handleVideoClick}
+                isSelected={selectedSubSec._id === subSec._id}
               />
             );
           })}

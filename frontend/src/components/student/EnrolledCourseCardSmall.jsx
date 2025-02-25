@@ -1,11 +1,12 @@
 import React from "react";
 import { formatDate } from "../../utils/formateDate";
+import { Link } from "react-router-dom";
 
-const InstructorCourseCardSmall = ({ course, token, onDelete }) => {
+const InstructorCourseCardSmall = ({ course, }) => {
   const TRUNCATE_LENGTH = 10;
 
   return (
-    <>
+    <Link to={`/dashboard/course-content/${course._id}`}>
       <div className="bg-richblack-800 w-[300px] h-[390px]  text-white rounded-xl shadow-md overflow-hidden transition-transform transform hover:scale-105">
         {/* Course Thumbnail */}
         <img
@@ -39,7 +40,7 @@ const InstructorCourseCardSmall = ({ course, token, onDelete }) => {
          
         </div>
       </div>
-    </>
+     </Link>
   );
 };
 
