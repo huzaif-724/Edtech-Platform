@@ -84,7 +84,7 @@ const CourseContent = () => {
                 key={selectedVideo}
                 src={selectedVideo}
                 controls
-                // autoPlay
+                autoPlay
                 controlsList="nodownload"
                 className="w-full max-w-[95%] aspect-video max-h-[590px] bg-black border border-richblack-800 rounded-lg"
               />

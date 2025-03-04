@@ -12,6 +12,11 @@ import CreateSection from "./pages/instructor/CreateSection";
 import PublishCourse from "./pages/instructor/PublishCourse";
 import EnrolledCourses from "./pages/student/EnrolledCourses";
 import CourseContent from "./pages/student/CourseContent";
+import Dashboard from "./components/Dashboard";
+import Profile from "./pages/Profile";
+import DashboardPage from "./pages/DashboardPage";
+import Setting from "./pages/Setting";
+import PurchaseHistory from "./pages/student/PurchaseHistory";
 
 
 
@@ -21,6 +26,7 @@ function App() {
        <div className=" bg-richblack-900">
 
         <Navbar/>
+        <Dashboard />
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/signup" element={<Signup/>}/>
@@ -35,6 +41,11 @@ function App() {
 
           <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses/>} />
           <Route path="/dashboard/course-content/:courseId" element={<CourseContent/>} />
+          <Route path="/dashboard/my-profile" element={<Profile/>} />
+          <Route path="/dashboard" element={<DashboardPage/>} />
+          <Route path="/dashboard/settings" element={<Setting/>} />
+          <Route path="/dashboard/puchase-history" element={<PurchaseHistory/>} />
+
         </Routes>
         
        </div>

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     signupData : null,
+    isDashboardOpen: false,
     token: localStorage.getItem("token") || null,
     user: JSON.parse(localStorage.getItem("user")) || null, 
 }
@@ -26,9 +27,15 @@ const authSlice = createSlice({
             state.user = null;
             localStorage.removeItem("token"); 
         },
+        toggleDashboard: (state) => {
+            state.isDashboardOpen = !state.isDashboardOpen;
+        },
+        closeDashboard: (state) => {
+            state.isDashboardOpen = false;
+        },
     }
 })
 
-export const {setLoading, setSignupData, setToken, logout, setUser } = authSlice.actions;
+export const {setLoading, setSignupData, setToken, logout, setUser, toggleDashboard, closeDashboard} = authSlice.actions;
 
 export default authSlice.reducer;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "../assets/edtechLogo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
-import { logout } from "../slices/authSlice";
+import { logout, toggleDashboard } from "../slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {
@@ -27,7 +27,8 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
           {token ? (
             <>
-              <button className="rounded-md border  px-1 py-2 border-none bg-richblack-900  lg:px-4 lg:py-2 text-white hover:bg-blue-800">
+              <button className="rounded-md border  px-1 py-2 border-none bg-richblack-900  lg:px-4 lg:py-2 text-white hover:bg-blue-800"
+              onClick={()=> dispatch(toggleDashboard())}>
                 Dashboard
               </button>
 
