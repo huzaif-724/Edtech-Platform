@@ -33,7 +33,11 @@ export const endpoints = {
   CREATE_SUBSECTION_API : BASE_URL + "/course/createSubSection",
   DELETE_SUBSECTION_API : BASE_URL + "/course/deleteSubSection",
   UPDATE_SUBSECTION_API : BASE_URL + "/course/updateSubSection",
-  
+
+  //Payments
+  COURSE_PAYMENT_API : BASE_URL + "/payment/capturePayment",
+  COURSE_VERIFY_API : BASE_URL + "/payment/verifyPayment",
+  SEND_PAYMENT_SUCCESS_EMAIL_API : BASE_URL + "/payment/sendPaymentSuccessEmail",
 
 
 

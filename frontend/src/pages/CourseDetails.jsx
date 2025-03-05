@@ -8,11 +8,12 @@ import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { endpoints } from "../services/api";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { isAction } from "@reduxjs/toolkit";
 import { formatDate } from "../utils/formateDate";
 import CourseDetailsCard from "../components/CourseDetailsCard";
+import { BuyCourse } from "../services/studentFeaturesAPI";
 
 const { GET_COURSE_DETAILS } = endpoints;
 
@@ -29,8 +30,10 @@ const markdownContent = `
 const CourseDetails = () => {
   const { courseId } = useParams();
   const token = useSelector((state) => state.auth.token);
+  const user = useSelector((state)=> state.auth.user);
   const [course, setCourse] = useState({});
   const [duration, setDuration] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!courseId) {
@@ -97,8 +100,11 @@ const CourseDetails = () => {
   }, [course]);
 
   const handleBuyCourse = () => {
-    return;
-  };
+    if (token) {
+      BuyCourse(token, [courseId], user, navigate)
+      return
+    }
+  }
 
   return (
     <div className=" min-h-screen">
