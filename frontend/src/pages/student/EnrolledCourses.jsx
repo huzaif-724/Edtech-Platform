@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react"
 import EnrolledCourseCard from "../../components/student/EnrolledCourseCard";
 import EnrolledCourseCardSmall from "../../components/student/EnrolledCourseCardSmall";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getEnrolledCourses } from "../../services/courseAPI";
 
 const EnrolledCourses = () => {
 
   const token = useSelector((state)=> state.auth.token);
-  const [courses, setCourses] = useState([]); 
+  const loading = useSelector((state)=> state.auth.loading);
+  const [courses, setCourses] = useState([]);
+  const dispatch = useDispatch(); 
 
   useEffect(()=>{
 
     const fetchCourses = async ()=>{
-      const response = await getEnrolledCourses(token);
+      const response = await getEnrolledCourses(token, dispatch);
 
-      if(response.status === 200)
+      if(response.data.success)
       {
           setCourses(response.data.data);
       }
@@ -29,7 +31,14 @@ const EnrolledCourses = () => {
   }, [courses])
 
 
-
+  if (loading) {
+    
+    return (
+      <div className="grid min-h-screen place-items-center">
+        <div className="loader"></div>
+      </div>
+    )
+  }
 
 
   return (

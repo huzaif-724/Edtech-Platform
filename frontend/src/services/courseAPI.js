@@ -1,6 +1,7 @@
 import axios from "axios";
 import { endpoints } from "./api";
 import toast from "react-hot-toast";
+import { setLoading } from "../slices/authSlice";
 
 const {
   GET_ALL_CATEGORIES,
@@ -47,8 +48,9 @@ export const createCourse = async (token, formData) => {
 };
 
 //Get Instructor Courses
-export const fetchInstructorCourses = async (token) => {
+export const fetchInstructorCourses = async (token, dispatch) => {
   const toastId = toast.loading("Loading...");
+  dispatch(setLoading(true));
   let result = null;
 
   try {
@@ -72,13 +74,15 @@ export const fetchInstructorCourses = async (token) => {
   }
 
   toast.dismiss(toastId);
+  dispatch(setLoading(false))
   return result;
 };
 
 //Fetch Enrolled Courses
-export const getEnrolledCourses = async(token)=>{
+export const getEnrolledCourses = async(token, dispatch)=>{
 
   const toastId = toast.loading("Loading...");
+  dispatch(setLoading(true));
   let result = null;
 
   try {
@@ -101,14 +105,16 @@ export const getEnrolledCourses = async(token)=>{
   }
 
   toast.dismiss(toastId);
+  dispatch(setLoading(false));
   return result;
 
 }
 
 // Get Full Course Details
 
-export const fetchEnrolledCourse = async (courseId, token) => {
+export const fetchEnrolledCourse = async (courseId, token, dispatch) => {
   const toastId = toast.loading("Loading...");
+  dispatch(setLoading(true));
   let result;
   try {
 
@@ -134,6 +140,7 @@ export const fetchEnrolledCourse = async (courseId, token) => {
     toast.error(error.response?.data?.message || "Could Not Fetch Course");
   }
   toast.dismiss(toastId);
+  dispatch(setLoading(false));
   return result;
 };
 

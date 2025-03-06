@@ -9,11 +9,12 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { endpoints } from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { isAction } from "@reduxjs/toolkit";
 import { formatDate } from "../utils/formateDate";
 import CourseDetailsCard from "../components/CourseDetailsCard";
 import { BuyCourse } from "../services/studentFeaturesAPI";
+import { setLoading } from "../slices/authSlice";
 
 const { GET_COURSE_DETAILS } = endpoints;
 
@@ -30,19 +31,22 @@ const markdownContent = `
 const CourseDetails = () => {
   const { courseId } = useParams();
   const token = useSelector((state) => state.auth.token);
+  const loading = useSelector((state)=> state.auth.loading);
   const user = useSelector((state)=> state.auth.user);
   const [course, setCourse] = useState({});
   const [duration, setDuration] = useState(0);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!courseId) {
       console.log("Error: courseId is undefined");
       return;
     }
-
+   
     const fetchCourse = async () => {
       const toastId = toast.loading("Loading...");
+      dispatch(setLoading(true))
       try {
         console.log("Sending request with token:", token);
 
@@ -75,6 +79,7 @@ const CourseDetails = () => {
         toast.error(error.response?.data?.message || "Could Not Fetch Course");
       }
       toast.dismiss(toastId);
+      dispatch(setLoading(false))
     };
 
     fetchCourse();
@@ -105,6 +110,17 @@ const CourseDetails = () => {
       return
     }
   }
+
+  if (loading) {
+    
+    return (
+      <div className="grid min-h-screen place-items-center">
+        <div className="loader"></div>
+      </div>
+    )
+  }
+
+
 
   return (
     <div className=" min-h-screen">
@@ -153,12 +169,19 @@ const CourseDetails = () => {
               <p className="space-x-3 pb-4 text-3xl font-semibold text-richblack-5">
                 Rs. {course?.price}
               </p>
+
               <button
-                className="cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900"
-                onClick={handleBuyCourse}
-              >
-                Buy Now
-              </button>
+              className="cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900"
+              onClick={
+                user && course?.studentsEnroled?.includes(user?._id)
+                  ? () => navigate("/dashboard/enrolled-courses")
+                  : handleBuyCourse
+              }
+            >
+              {user && course?.studentsEnroled?.includes(user?._id)
+                ? "Go To Course"
+                : "Buy Now"}
+            </button>
             </div>
           </div>
           {/* Courses Card */}

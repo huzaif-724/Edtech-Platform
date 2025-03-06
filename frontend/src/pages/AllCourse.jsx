@@ -2,16 +2,19 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { endpoints } from "../services/api";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import CourseCard from "../components/CourseCard";
 import { useNavigate } from "react-router-dom";
+import { setLoading } from "../slices/authSlice";
 
 const { GET_ALL_COURSES_API } = endpoints;
 
 const AllCourses = () => {
   const [courses, setCourses] = useState([]);
   const token = useSelector((value) => value.auth.token);
+  const loading = useSelector((state)=> state.auth.loading);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (token === null) {
@@ -21,6 +24,7 @@ const AllCourses = () => {
 
   useEffect(() => {
     const toastId = toast.loading("Loading...");
+    dispatch(setLoading(true))
 
     async function fetchCourses() {
       try {
@@ -47,10 +51,20 @@ const AllCourses = () => {
       }
 
       toast.dismiss(toastId);
+      dispatch(setLoading(false))
     }
 
     fetchCourses();
   }, []);
+
+  if (loading) {
+    
+    return (
+      <div className="grid min-h-screen place-items-center">
+        <div className="loader"></div>
+      </div>
+    )
+  }
 
   return (
     <div className="bg-richblack-900 min-h-screen w-[90%] mx-auto flex flex-col items-center px-4 py-8">

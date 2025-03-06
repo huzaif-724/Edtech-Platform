@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchEnrolledCourse } from "../../services/courseAPI";
 import Section from "../../components/student/Section";
 
 const CourseContent = () => {
   const token = useSelector((state) => state.auth.token);
+  const loading = useSelector((state)=> state.auth.loading);
   const { courseId } = useParams();
   const [course, setCourse] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
   const [subSection, setSubSection] = useState();
+  const dispatch = useDispatch(); 
 
   const [isActive, setIsActive] = useState(Array(0));
   const handleActive = (id) => {
@@ -24,7 +26,7 @@ const CourseContent = () => {
   useEffect(() => {
     const fetchCourseDetails = async () => {
       try {
-        const response = await fetchEnrolledCourse(courseId, token);
+        const response = await fetchEnrolledCourse(courseId, token, dispatch);
         if (response.status === 200) {
           const courseData = response.data.data.courseDetails;
           setCourse(courseData);
@@ -50,6 +52,15 @@ const CourseContent = () => {
     setSelectedVideo(subSec.videoUrl);
     setSubSection(subSec);
   };
+
+  if (loading) {
+    
+    return (
+      <div className="grid min-h-screen place-items-center">
+        <div className="loader"></div>
+      </div>
+    )
+  }
 
   return (
     <div className=" min-h-screen h-auto flex flex-col-reverse md:flex-row gap-4 w-full">
