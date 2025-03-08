@@ -166,6 +166,20 @@ exports.login = async(req, res)=>{
    }
 }
 
+exports.logout = (req, res) => {
+    res.clearCookie("token", {
+        httpOnly: true,
+        sameSite: "Lax", // Change to "None" in production
+    });
+    
+
+    return res.status(200).json({
+        success: true,
+        message: "Logged out successfully",
+    });
+};
+
+
 
 // Send OTP For Email Verification
 exports.sendotp = async (req, res) => {

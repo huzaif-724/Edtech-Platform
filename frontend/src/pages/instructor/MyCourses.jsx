@@ -63,7 +63,7 @@ const MyCourses = () => {
         </div>
 
         <div className=" hidden lg:block">
-          {courses.length > 0 ? (
+          {courses?.length > 0 ? (
             <div className="flex justify-center items-center flex-col mt-10">
               {courses.map((course) => (
                 <InstructorCourseCard
@@ -82,7 +82,7 @@ const MyCourses = () => {
         </div>
 
         <div className=" block lg:hidden">
-          {courses.length > 0 ? (
+          {courses?.length > 0 ? (
             <div className="flex justify-center items-center flex-col mt-10 gap-10 mb-10">
               {courses.map((course) => (
                 <InstructorCourseCardSmall

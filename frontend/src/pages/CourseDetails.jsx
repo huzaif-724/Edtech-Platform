@@ -83,7 +83,7 @@ const CourseDetails = () => {
     };
 
     fetchCourse();
-  }, [courseId, token]);
+  }, [courseId]);
 
   const [isActive, setIsActive] = useState(Array(0));
   const handleActive = (id) => {
@@ -147,7 +147,7 @@ const CourseDetails = () => {
               </div>
               <p className={`text-richblack-200`}>{course?.description}</p>
               <div className="text-md text-[#DBDDEA] flex flex-wrap items-center gap-2">
-                <span>{`2300 students enrolled`}</span>
+                <span>{`${course.studentsEnroled?.length} Students Enrolled`}</span>
               </div>
               <div>
                 <p className="text-[#DBDDEA]">{`Created by ${

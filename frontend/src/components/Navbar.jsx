@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import logo from "../assets/edtechLogo.png";
 import { Link, useNavigate } from "react-router-dom";
-import { AiOutlineMenu } from "react-icons/ai";
 import { logout, toggleDashboard } from "../slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+
 
 const Navbar = () => {
   const { token } = useSelector((state) => state.auth);

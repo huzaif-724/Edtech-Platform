@@ -5,7 +5,8 @@ export const endpoints = {
   //auth
   SENDOTP_API: BASE_URL + "/auth/sendotp",
   SIGNUP_API: BASE_URL + "/auth/signup",
-  LOGIN_API: BASE_URL + "/auth/login", 
+  LOGIN_API: BASE_URL + "/auth/login",
+  LOGOUT_API: BASE_URL + "/auth/logout", 
 
   //course
   GET_ALL_COURSES_API : BASE_URL + "/course/getAllCourses",

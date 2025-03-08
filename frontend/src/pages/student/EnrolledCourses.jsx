@@ -16,7 +16,7 @@ const EnrolledCourses = () => {
     const fetchCourses = async ()=>{
       const response = await getEnrolledCourses(token, dispatch);
 
-      if(response.data.success)
+      if(response?.data.success)
       {
           setCourses(response.data.data);
       }
@@ -24,7 +24,7 @@ const EnrolledCourses = () => {
     fetchCourses();
     
 
-  },[token])
+  },[])
 
   useEffect(()=>{
     console.log('courses :>> ', courses);

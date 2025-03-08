@@ -12,7 +12,7 @@ const mailSender = async (email, subject, body) => {
     });
 
     const mailOptions = {
-      from: `"Your App Name" <${process.env.MAIL_USER}>`,
+      from: `"SmartLearn" <${process.env.MAIL_USER}>`,
       to: email,
       subject,
       html: body,

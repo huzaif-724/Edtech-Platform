@@ -46,7 +46,7 @@ const CourseContent = () => {
     };
 
     fetchCourseDetails();
-  }, [courseId, token]);
+  }, [courseId]);
 
   const handleVideoClick = (subSec) => {
     setSelectedVideo(subSec.videoUrl);

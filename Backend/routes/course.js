@@ -15,7 +15,7 @@ router.post("/editCourse", auth, isInstructor, editCourse);
 router.delete("/deleteCourse", auth, isInstructor, deleteCourse);
 router.get("/getAllCourses",auth,  getAllCourses)
 router.post("/getCourseDetails", auth, getCourseDetails)
-router.get("/getEnrolledCourses", auth, getEnrolledCourses) //isDtudent add
+router.get("/getEnrolledCourses", auth, isStudent, getEnrolledCourses) //isDtudent add
 router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses)
 router.get("/getFullCourseDetails", auth, getFullCourseDetails)
 

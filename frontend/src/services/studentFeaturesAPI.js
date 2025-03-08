@@ -1,5 +1,5 @@
 import { toast } from "react-hot-toast";
-import rzpLogo from "../assets/rzp_logo.png";
+import rzpLogo from "../assets/edtechLogo.png";
 import { endpoints } from "../services/api";
 import axios from "axios";
 
@@ -65,7 +65,7 @@ export async function BuyCourse(token, courses, user_details, navigate) {
       currency: orderResponse.data.data.currency,
       amount: `${orderResponse.data.data.amount}`,
       order_id: orderResponse.data.data.id,
-      name: "StudyNotion",
+      name: "SmartLearn",
       description: "Thank you for Purchasing the Course.",
       image: rzpLogo,
       prefill: {
@@ -90,7 +90,7 @@ export async function BuyCourse(token, courses, user_details, navigate) {
     });
   } catch (error) {
     console.log("PAYMENT API ERROR............", error);
-    toast.error("Could Not make Payment.");
+    toast.error("Instructor cannot buy Course");
   }
   toast.dismiss(toastId);
 }

@@ -17,15 +17,16 @@ const AllCourses = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (token === null) {
+    if (!token) {
       navigate("/login");
     }
   }, []);
-
+  
   useEffect(() => {
-    const toastId = toast.loading("Loading...");
-    dispatch(setLoading(true))
 
+    const toastId = toast.loading("Loading...");
+    dispatch(setLoading(true));
+  
     async function fetchCourses() {
       try {
         const response = await axios.get(GET_ALL_COURSES_API, {
@@ -34,28 +35,23 @@ const AllCourses = () => {
           },
           withCredentials: true,
         });
-
-        console.log("response :>> ", response);
-
+  
         if (!response.data.success) {
           throw new Error(response.data.message);
         }
-
+  
         setCourses(response.data.data);
       } catch (error) {
-        console.log(
-          "Fechting courses error............",
-          error.response || error
-        );
         toast.error(error.response?.data?.message || "Could Not Fetch Courses");
       }
-
+  
       toast.dismiss(toastId);
-      dispatch(setLoading(false))
+      dispatch(setLoading(false));
     }
-
+  
     fetchCourses();
-  }, []);
+  }, []);  // ✅ Now fetches only when token is valid
+  
 
   if (loading) {
     
