@@ -160,7 +160,7 @@ function App() {
                 element={<CourseContent />}
               />
               <Route
-                path="/dashboard/purchase-history"
+                path="/dashboard/cart"
                 element={<PurchaseHistory />}
               />
             </>
