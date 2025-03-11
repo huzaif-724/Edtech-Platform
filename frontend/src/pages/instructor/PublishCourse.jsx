@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { resetCourseState } from "../../slices/courseSlice";
+import { deleteCourse } from "../../services/courseAPI";
 
 
 
@@ -25,6 +26,8 @@ useEffect(()=>{
 
 },[])
 
+const courseId = courseDetails?._id;
+
 
 const publishHandler = () => {
 
@@ -37,6 +40,16 @@ const publishHandler = () => {
       dispatch(resetCourseState()); 
     }, 2000);
   };
+
+  const cancelPublished = async ()=>{
+
+      const response = await deleteCourse(courseId, token);
+
+      if (response.data.success) {
+        navigate("/dashboard/my-courses")
+      }
+
+  }
 
 
 
@@ -72,6 +85,7 @@ const publishHandler = () => {
 
           <div className=" flex gap-5 mt-8">
             <button className="ml-5  gap-2 bg-richblack-900 py-3 px-3 rounded-lg border border-richblack-500 text-richblack-50"
+            onClick={cancelPublished}
             >
               Cancel
             </button>

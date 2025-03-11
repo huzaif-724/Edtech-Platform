@@ -74,7 +74,7 @@ const AddCourse = () => {
   };
 
   return (
-    <div className=" min-h-screen flex flex-col h-auto pt-20 mt-12 mx-auto w-[90%]     gap-5  ">
+    <div className=" min-h-screen flex  flex-col h-auto pt-20 mt-12 mx-auto w-[90%]     gap-5  ">
       <div className=" flex items-center  mx-auto w-[90%] lg:w-[50%]  lg:pl-28 ">
         <div className=" flex flex-col">
           <div className=" w-[40px] h-[40px] rounded-full bg-[#251400] border border-[#FFD60A] text-[#FFD60A] text-[18px] flex justify-center items-center">
@@ -93,7 +93,7 @@ const AddCourse = () => {
         </div>
       </div>
 
-      <div className=" flex  justify-center gap-4 mt-16  ">
+      <div className=" flex  justify-center gap-4 mt-16  mb-10 ">
         <div className="w-[550px] lg:px-5 pb-5 px-4  bg-richblack-800 rounded-lg">
           {/* Form */}
           <form
@@ -223,7 +223,7 @@ const AddCourse = () => {
                 name="whatYouWillLearn"
                 value={whatYouWillLearn}
                 onChange={handleOnChange}
-                placeholder="Enter your email"
+                placeholder="Enter Benefits of the course"
                 className="form-input h-[100px] w-full border border-richblack-600 bg-richblack-700 text-richblack-200 rounded-md px-4 py-2 focus:ring-2 focus:ring-yellow-50"
               />
             </label>

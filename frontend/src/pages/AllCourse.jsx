@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CourseCard from "../components/CourseCard";
 import { useNavigate } from "react-router-dom";
 import { setLoading } from "../slices/authSlice";
+import Footer from "../components/Footer"
 
 const { GET_ALL_COURSES_API } = endpoints;
 
@@ -63,8 +64,9 @@ const AllCourses = () => {
   }
 
   return (
+    <>
     <div className="bg-richblack-900 min-h-screen w-[90%] mx-auto flex flex-col items-center px-4 py-8">
-      <div className=" flex flex-col gap-10 pt-36 lg:flex-row flex-wrap ">
+      <div className=" flex flex-col gap-10 pt-24 lg:flex-row flex-wrap ">
         {/* Rendering Courses */}
         {courses.map((course) => (
           <CourseCard
@@ -79,6 +81,10 @@ const AllCourses = () => {
         ))}
       </div>
     </div>
+
+    <Footer/>
+    
+    </>
   );
 };
 

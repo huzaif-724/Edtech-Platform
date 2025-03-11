@@ -48,7 +48,7 @@ const Section = ({ course, isActive, handleActive }) => {
           height: sectionHeight,
         }}
       >
-        <div className="text-textHead flex flex-col gap-2 px-7 py-6 font-semibold">
+        <div className="text-textHead flex flex-col gap-2 px-7 py-6 ">
           {course?.subSection?.map((subSec, i) => {
             return <SubSection subSec={subSec} key={i} />;
           })}

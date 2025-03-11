@@ -11,7 +11,7 @@ const Sidebar = () => {
   const user = useSelector((state)=> state.auth.user)
   const dispatch = useDispatch();
   const dashboardRef = useRef(null);
-  const [confirmationModal, setConfirmationModal] = useState(null);
+  const [confirmationModal, setConfirmationModal] = useState(false);
 
   // Close dashboard when clicking outside
   useEffect(() => {
@@ -64,8 +64,10 @@ const Sidebar = () => {
                 text2: "You will be logged out of your account.",
                 btn1Text: "Logout",
                 btn2Text: "Cancel",
-                btn1Handler: () => dispatch(logout()),
-                btn2Handler: () => setConfirmationModal(null),
+                btn1Handler: () => {
+                  dispatch(logout())
+                  setConfirmationModal(false)},
+                btn2Handler: () => setConfirmationModal(false),
               })
             }
             className="px-8 py-2 text-sm font-medium text-richblack-300"

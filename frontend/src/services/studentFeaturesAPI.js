@@ -1,5 +1,5 @@
 import { toast } from "react-hot-toast";
-import rzpLogo from "../assets/edtechLogo.png";
+import rzpLogo from "../assets/Logo-Full-Light.png";
 import { endpoints } from "../services/api";
 import axios from "axios";
 
