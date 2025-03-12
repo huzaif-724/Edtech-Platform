@@ -53,7 +53,7 @@ const Login = () => {
         throw new Error(response.data.message);
       }
 
-      console.log("response :>> ", response.data.user);
+      //console.log("response :>> ", response.data.user);
 
       dispatch(setToken(response.data.token));
       dispatch(setUser(response.data.user));
@@ -61,7 +61,7 @@ const Login = () => {
       toast.success("Logged In");
       navigate("/allCourses");
     } catch (error) {
-      console.log("error :>> ", error);
+      //console.log("error :>> ", error);
       toast.error(error.response?.data?.message || "Login Failed");
     }
 

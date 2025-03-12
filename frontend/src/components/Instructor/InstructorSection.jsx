@@ -41,7 +41,7 @@ const InstructorSection = ({
     const response = await editSection(editedName, sectionId, courseId, token);
 
     if (response.status === 200) {
-      console.log("response section edit :>> ", response);
+      //console.log("response section edit :>> ", response);
 
       dispatch(setSections(response.data.data.courseContent));
     }

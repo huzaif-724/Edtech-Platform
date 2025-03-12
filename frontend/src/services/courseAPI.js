@@ -93,7 +93,7 @@ export const getEnrolledCourses = async(token, dispatch)=>{
       withCredentials: true,
     });
 
-    console.log('response :>> ', response);
+    //console.log('response :>> ', response);
 
     if (!response.data.success) {
       throw new Error(response.data.message);
@@ -127,7 +127,7 @@ export const fetchEnrolledCourse = async (courseId, token, dispatch) => {
     });
     
 
-    console.log("Enrolled Course Details Response:", response);
+    //console.log("Enrolled Course Details Response:", response);
 
     if (!response.data.success) {
       throw new Error(response.data.message);
@@ -157,7 +157,7 @@ export const deleteCourse = async (courseId, token) => {
       },
       withCredentials: true,
     });
-    console.log("Course Delete Response", response);
+    //console.log("Course Delete Response", response);
 
     if (!response.data.success) {
       throw new Error(response.data.message);
@@ -342,7 +342,7 @@ export const editSubsection = async (formData, token)=>{
       withCredentials: true,
     });
 
-    console.log('upadte subsection response :>> ', response);
+    //console.log('upadte subsection response :>> ', response);
 
     if (!response.data.success) {
       throw new Error(response.data.message);

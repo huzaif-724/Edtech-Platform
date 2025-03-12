@@ -45,7 +45,7 @@ const CreateSection = () => {
     const response = await createSection(sectionName, courseId, token);
 
     if (response.status === 200) {
-      console.log("response :>> ", response);
+      //console.log("response :>> ", response);
 
       dispatch(setSections(response.data.updatedCourse.courseContent));
 

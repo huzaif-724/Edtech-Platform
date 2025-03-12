@@ -4,7 +4,7 @@ import heroImg from "../assets/hero image.webp";
 import { PiShareFatFill } from "react-icons/pi";
 import TimelineSection from "../components/HomePage/TimeLine";
 import InstructorSection from "../components/HomePage/InstructorSection";
-import LearningLanguageSection from "../components/HomePage/LearningLanguagesSection"
+import LearningLanguageSection from "../components/HomePage/LearningLanguagesSection";
 import Footer from "../components/Footer";
 
 const Home = () => {
@@ -12,16 +12,17 @@ const Home = () => {
 
   return (
     <div className=" min-h-screen h-auto flex w-full  flex-col justify-center items-center">
-      <div className="  bg-richblack-900 pt-24  min-h-screen relative mx-auto flex flex-col md:flex-row  w-full max-w-screen-xl items-center justify-between gap-8 text-white">
+      <div className="  bg-richblack-900 lg:pt-24 lg:min-h-screen relative mx-auto flex flex-col md:flex-row  w-full max-w-screen-xl items-center justify-between gap-9 lg:gap-5 text-white">
         {/* Left Section - Text & Button */}
-        <div className="text-center md:text-left space-y-6">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text">
-            Unlock your coding potential with our online courses.
+        <div className="text-center md:text-left space-y-6 pt-28  lg:pt-0 w-[90%] ">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl pb-1 font-semibold bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text">
+            Empower Your Future with Coding Skills
           </h1>
           <p className="text-lg text-richblack-200">
-            Our courses are designed and taught by industry experts who have
-            years of experience in coding and are passionate about sharing their
-            knowledge with you.
+            With our coding courses, you can learn at your own pace, from
+            anywhere in the world, and get access to a wealth of resources,
+            including hands-on projects, quizzes, and personalized feedback from
+            instructors.
           </p>
 
           {/* Share Button */}
@@ -32,7 +33,7 @@ const Home = () => {
             <span className="bg-gradient-to-b from-[#1FA2FF] text-[16px] via-[#12D8FA] to-[#A6FFCB] bg-clip-text">
               Learn More
             </span>
-            <PiShareFatFill className="text-white" />
+            <PiShareFatFill className="text-black" />
           </button>
         </div>
 
@@ -83,10 +84,10 @@ const Home = () => {
         <InstructorSection />
       </div>
 
-    <div className=" w-full">
+      <div className=" w-full">
         {/* Footer */}
         <Footer />
-    </div>
+      </div>
     </div>
   );
 };

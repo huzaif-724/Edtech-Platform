@@ -47,6 +47,5 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"
-  },
-  "proxy": "http://localhost:4000"
+  }
 }

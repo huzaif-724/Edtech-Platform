@@ -41,7 +41,7 @@ const CourseDetails = () => {
 
   useEffect(() => {
     if (!courseId) {
-      console.log("Error: courseId is undefined");
+      //console.log("Error: courseId is undefined");
       return;
     }
 
@@ -49,7 +49,7 @@ const CourseDetails = () => {
       const toastId = toast.loading("Loading...");
       dispatch(setLoading(true));
       try {
-        console.log("Sending request with token:", token);
+        //console.log("Sending request with token:", token);
 
         const response = await axios.post(
           GET_COURSE_DETAILS,
@@ -62,7 +62,7 @@ const CourseDetails = () => {
           }
         );
 
-        console.log("Response received:", response);
+        //console.log("Response received:", response);
 
         if (!response.data.success) {
           throw new Error(response.data.message);
@@ -72,11 +72,11 @@ const CourseDetails = () => {
           throw new Error("Course details not found");
         }
 
-        console.log(response.data.data.courseDetails);
+        //console.log(response.data.data.courseDetails);
         setCourse(response.data.data.courseDetails);
         setDuration(response.data.data.totalDuration);
       } catch (error) {
-        console.log("Fetching course error:", error.response || error);
+        //console.log("Fetching course error:", error.response || error);
         toast.error(error.response?.data?.message || "Could Not Fetch Course");
       }
       toast.dismiss(toastId);

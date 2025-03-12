@@ -37,7 +37,7 @@ const VerifyEmail = () => {
         otp: otp,
       });
 
-      console.log("response :>> ", response);
+      //console.log("response :>> ", response);
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -46,7 +46,7 @@ const VerifyEmail = () => {
       toast.success("Signup Successful");
       navigate("/login");
     } catch (error) {
-      console.log("SIGNUP API ERROR............", error);
+      //console.log("SIGNUP API ERROR............", error);
       toast.error("Signup Failed");
       navigate("/signup");
     }
@@ -59,14 +59,14 @@ const VerifyEmail = () => {
       const response = await axios.post(SENDOTP_API, {
         email: signupData.email,
       });
-      console.log("response :>> ", response);
+      //console.log("response :>> ", response);
 
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
       toast.success("OTP Sent Successfully");
     } catch (error) {
-      console.log("SENDOTP API ERROR............", error.response || error); // Log the full error response
+      //console.log("SENDOTP API ERROR............", error.response || error); // Log the full error response
       toast.error(error.response?.data?.message || "Could Not Send OTP");
     }
 

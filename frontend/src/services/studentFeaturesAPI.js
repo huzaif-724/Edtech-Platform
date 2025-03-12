@@ -54,10 +54,10 @@ export async function BuyCourse(token, courses, user_details, navigate) {
     if (!orderResponse.data.success) {
       throw new Error(orderResponse.data.message);
     }
-    console.log(
-      "PAYMENT RESPONSE FROM BACKEND............",
-      orderResponse.data
-    );
+    // console.log(
+    //   "PAYMENT RESPONSE FROM BACKEND............",
+    //   orderResponse.data
+    // );
 
     // Opening the Razorpay SDK
     const options = {
@@ -86,10 +86,10 @@ export async function BuyCourse(token, courses, user_details, navigate) {
     paymentObject.open();
     paymentObject.on("payment.failed", function (response) {
       toast.error("Oops! Payment Failed.");
-      console.log(response.error);
+      //console.log(response.error);
     });
   } catch (error) {
-    console.log("PAYMENT API ERROR............", error);
+    //console.log("PAYMENT API ERROR............", error);
     toast.error("Instructor cannot buy Course");
   }
   toast.dismiss(toastId);
@@ -105,7 +105,7 @@ async function verifyPayment(bodyData, token, navigate) {
       },
     });
 
-    console.log("VERIFY PAYMENT RESPONSE FROM BACKEND............", response);
+    //console.log("VERIFY PAYMENT RESPONSE FROM BACKEND............", response);
 
     if (!response.data.success) {
       throw new Error(response.data.message);

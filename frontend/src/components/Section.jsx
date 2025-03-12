@@ -16,7 +16,7 @@ const Section = ({ course, isActive, handleActive }) => {
   }, [active]);
 
   return (
-    <div className="overflow-hidden w-[300px] lg:w-[800px] border border-solid border-richblack-600 bg-richblack-700 text-richblack-5 last:mb-0">
+    <div className="overflow-hidden w-[98%] lg:w-[800px] border border-solid border-richblack-600 bg-richblack-700 text-richblack-5 last:mb-0">
       <div>
         <div
           className={`flex cursor-pointer items-start justify-between bg-opacity-20 px-7  py-6 transition-[0.3s]`}

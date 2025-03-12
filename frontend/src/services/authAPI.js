@@ -12,6 +12,6 @@ export const logoutUser = async () => {
       throw new Error(response.data.message);
     }
   } catch (error) {
-    console.log("error :>> ", error);
+    //console.log("error :>> ", error);
   }
 };

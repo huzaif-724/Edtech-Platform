@@ -48,7 +48,7 @@ const MyCourses = () => {
   return (
     <>
       <div className=" w-full flex justify-center items-center h-auto ">
-        <div className=" text-white mt-16 min-h-screen h-auto w-full lg:w-[1200px] ">
+        <div className=" text-white mt-16 min-h-screen h-auto w-full  mb-10 lg:w-[1200px] ">
           <div className=" flex justify-between px-5 pt-10">
             <h1 className=" text-[#F1F2FF] font-semibold text-[25px] lg:text-[30px] ">
               My Courses
@@ -104,6 +104,7 @@ const MyCourses = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
