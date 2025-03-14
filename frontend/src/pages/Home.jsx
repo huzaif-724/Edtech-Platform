@@ -6,6 +6,8 @@ import TimelineSection from "../components/HomePage/TimeLine";
 import InstructorSection from "../components/HomePage/InstructorSection";
 import LearningLanguageSection from "../components/HomePage/LearningLanguagesSection";
 import Footer from "../components/Footer";
+import { motion } from "framer-motion";
+import { textVariant, fadeIn } from "../utils/motion";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -14,16 +16,32 @@ const Home = () => {
     <div className=" min-h-screen h-auto flex w-full  flex-col justify-center items-center">
       <div className="  bg-richblack-900 lg:pt-24 lg:min-h-screen relative mx-auto flex flex-col md:flex-row  w-full max-w-screen-xl items-center justify-between gap-9 lg:gap-5 text-white">
         {/* Left Section - Text & Button */}
+
         <div className="text-center md:text-left space-y-6 pt-28  lg:pt-0 w-[90%] ">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl pb-1 font-semibold bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text">
-            Empower Your Future with Coding Skills
-          </h1>
-          <p className="text-lg text-richblack-200">
-            With our coding courses, you can learn at your own pace, from
-            anywhere in the world, and get access to a wealth of resources,
-            including hands-on projects, quizzes, and personalized feedback from
-            instructors.
-          </p>
+          <motion.div
+            variants={textVariant()}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl pb-1 font-semibold bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text">
+              Empower Your Future with Coding Skills
+            </h1>
+          </motion.div>
+          <motion.p
+            variants={fadeIn("", "", 0.1, 1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="text-secondary mt-4 max-w-3xl  text-[17px] leading-[30px]"
+          >
+            <p className="text-lg text-richblack-200">
+              With our coding courses, you can learn at your own pace, from
+              anywhere in the world, and get access to a wealth of resources,
+              including hands-on projects, quizzes, and personalized feedback
+              from instructors.
+            </p>
+          </motion.p>
 
           {/* Share Button */}
           <button
@@ -38,6 +56,7 @@ const Home = () => {
         </div>
 
         {/* Right Section - Image */}
+
         <img
           src={heroImg}
           alt="Hero"

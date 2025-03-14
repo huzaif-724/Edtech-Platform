@@ -47,11 +47,12 @@ const EnrolledCourses = () => {
           <div className=" hidden lg:block">
             {courses.length > 0 ? (
               <div className="flex justify-center items-center flex-col mt-10">
-                {courses.map((course) => (
+                {courses.map((course, index) => (
                   <EnrolledCourseCard
                     key={course._id}
                     course={course}
                     token={token}
+                    index={index}
                   />
                 ))}
               </div>
@@ -65,11 +66,12 @@ const EnrolledCourses = () => {
           <div className=" block lg:hidden">
             {courses.length > 0 ? (
               <div className="flex justify-center items-center flex-col mt-10 gap-10">
-                {courses.map((course) => (
+                {courses.map((course, index) => (
                   <EnrolledCourseCardSmall
                     key={course._id}
                     course={course}
                     token={token}
+                    index={index}
                   />
                 ))}
               </div>

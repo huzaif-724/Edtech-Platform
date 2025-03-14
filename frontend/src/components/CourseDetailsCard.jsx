@@ -5,6 +5,8 @@ import copy from "copy-to-clipboard";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
+import { fadeIn } from "../utils/motion";
 
 const CourseDetailsCard = ({ course, handleBuyCourse }) => {
   const navigate = useNavigate();
@@ -15,7 +17,11 @@ const CourseDetailsCard = ({ course, handleBuyCourse }) => {
   };
 
   return (
-    <>
+    <motion.div
+      variants={fadeIn("up", "spring", 1 * 0.5, 0.75)}
+      initial="hidden"
+      animate="show"
+    >
       <div
         className={`flex flex-col gap-4 rounded-md bg-richblack-700 p-4 text-richblack-5 w-[320px] ml-20`}
       >
@@ -73,7 +79,7 @@ const CourseDetailsCard = ({ course, handleBuyCourse }) => {
           </div>
         </div>
       </div>
-    </>
+    </motion.div>
   );
 };
 

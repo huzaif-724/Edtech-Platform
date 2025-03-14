@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { fetchEnrolledCourse } from "../../services/courseAPI";
 import Section from "../../components/student/Section";
 import Footer from "../../components/Footer";
+import { motion } from "framer-motion";
+import { textVariant } from "../../utils/motion";
 
 const CourseContent = () => {
   const token = useSelector((state) => state.auth.token);
@@ -66,12 +68,19 @@ const CourseContent = () => {
     <>
       <div className=" min-h-screen mb-10 h-auto flex flex-col-reverse md:flex-row gap-4 w-full">
         <div className=" w-[95%] mx-auto md:w-[40%] lg:w-[26%] min-h-screen lg:bg-richblack-800  ">
-          <h1 className=" text-white hidden md:block  md:pt-24 text-[18px] font-bold pl-5">
-            {course?.title}
-          </h1>
+          <motion.div
+            variants={textVariant()}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <h1 className=" text-white hidden md:block  md:pt-24 text-[18px] font-bold pl-5">
+              {course?.title}
+            </h1>
+          </motion.div>
           <div className="  md:w-[90%] mx-auto lg:pt-4 hidden  lg:flex items-center border-b-2 border-richblack-700"></div>
           <div className=" md:pt-5 lg:mb-5">
-            {course?.courseContent.map((section) => (
+            {course?.courseContent.map((section, index) => (
               <Section
                 key={section._id}
                 section={section}
@@ -79,6 +88,7 @@ const CourseContent = () => {
                 handleActive={handleActive}
                 handleVideoClick={handleVideoClick}
                 selectedSubSec={subSection}
+                index={index}
               />
             ))}
           </div>

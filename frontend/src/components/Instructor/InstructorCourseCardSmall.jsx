@@ -4,8 +4,10 @@ import { FiEdit2 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useState } from "react";
 import { deleteCourse } from "../../services/courseAPI";
+import { motion } from "framer-motion";
+import { fadeIn } from "../../utils/motion";
 
-const InstructorCourseCardSmall = ({ course, token, onDelete }) => {
+const InstructorCourseCardSmall = ({ course, token, onDelete, index }) => {
   const TRUNCATE_LENGTH = 10;
   const [isModalOpen, setModalOpen] = useState(false);
   const openModal = () => setModalOpen(true);
@@ -20,7 +22,11 @@ const InstructorCourseCardSmall = ({ course, token, onDelete }) => {
   };
 
   return (
-    <>
+    <motion.div
+      variants={fadeIn("up", "spring", index * 0.5, 0.75)}
+      initial="hidden"
+      animate="show"
+    >
       <div className="bg-richblack-800 w-[300px] h-[390px]  text-white rounded-xl shadow-md overflow-hidden transition-transform transform hover:scale-105">
         {/* Course Thumbnail */}
         <img
@@ -97,7 +103,7 @@ const InstructorCourseCardSmall = ({ course, token, onDelete }) => {
           </div>
         </div>
       )}
-    </>
+    </motion.div>
   );
 };
 

@@ -66,12 +66,13 @@ const MyCourses = () => {
           <div className=" hidden lg:block">
             {courses?.length > 0 ? (
               <div className="flex justify-center items-center flex-col mt-10">
-                {courses.map((course) => (
+                {courses.map((course, index) => (
                   <InstructorCourseCard
                     key={course._id}
                     course={course}
                     token={token}
                     onDelete={deleteHandler}
+                    index={index}
                   />
                 ))}
               </div>
@@ -86,12 +87,13 @@ const MyCourses = () => {
           <div className=" block lg:hidden">
             {courses?.length > 0 ? (
               <div className="flex justify-center items-center flex-col mt-10 gap-10 mb-10">
-                {courses.map((course) => (
+                {courses.map((course, index) => (
                   <InstructorCourseCardSmall
                     key={course._id}
                     course={course}
                     token={token}
                     onDelete={deleteHandler}
+                    index={index}
                   />
                 ))}
               </div>
@@ -104,7 +106,7 @@ const MyCourses = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
