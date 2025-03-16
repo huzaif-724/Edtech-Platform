@@ -1,29 +1,36 @@
-# E-Learning Platform (MERN Stack)
-A full-stack web application where instructors can create courses, and students can purchase and enroll in courses. Includes video lectures, PDF notes, and a dashboard for both roles. <br />
-🚧 This project is currently under development. 🚧
+# 🚀 SmartLearn: An EdTech Platform 🎓
+SmartLearn is a modern EdTech platform built using the MERN stack that enables instructors to create and manage courses while allowing students to purchase and enroll in them. It offers role-based access control, secure payments, a rich learning experience with videos, and a dashboard for both instructors and students.
 <br />
-
-## 🚀 Project Status <br />
-✅ Backend – Completed (MERN stack with authentication, payment, and course management) <br />
-🚧 Frontend – Ongoing (Building the UI and integrating with the backend) <br />
  
-## 🚀 Features (Ongoing Development)
+## 🚀 Features
 
-### ✅ Completed Features
-User Authentication (Signup, Login, Logout) <br />
-Home Page & Course Browsing <br />
-Course Details Page <br />
-Role-based access control (Instructor & Student)
+# ✅ General Features
+🎯 Role-Based Access Control (Instructor & Student).<br />
+💳 Secure Payments with Razorpay integration.<br />
+📂 Course Creation with video uploads & PDF attachments.<br />
+🎥 Video Playback for learning anytime, anywhere.<br />
+📊 Instructor Dashboard to manage courses & track student enrollments.<br />
+🏆 Student Dashboard to track progress & access purchased courses.<br />
+🔍 Course Filtering & Search for a seamless experience.<br />
+📌 Optimized Performance & Security for smooth operations.<br />
 
-### ⏳ In Progress
-Instructor Dashboard (Manage Courses, Upload Content) <br />
-Student Dashboard (Track Enrolled Courses) <br />
-Razorpay Payment Integration <br />
+# ✅ Instructor Features
+➡️ Create & Manage Courses (Title, Description, Price, Category).<br />
+➡️ Upload Course Videos & PDFs with thumbnails.<br />
+➡️ Publish Courses once all sections are added.<br />
+➡️ Track Student Enrollments & Performance.<br />
+
+# ✅ Student Features
+🎓 Browse & Purchase Courses securely.<br />
+🎥 Watch Course Videos with a smooth player experience.<br />
+📂 Download Course PDFs for offline study.<br />
+📊 Track Progress & Completed Courses.<br />
 
 ## 🛠️ Tech Stack 
 ### Frontend 
 React.js (UI framework) <br />
 Tailwind CSS (Styling) <br />
+Framer Motion (for smooth animations) <br />
 React Router (Navigation) <br />
 Redux Toolkit (State Management) <br />
 React Icons (Icons) <br />
