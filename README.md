@@ -14,13 +14,13 @@ SmartLearn is a modern EdTech platform built using the MERN stack that enables i
 🔍 Course Filtering & Search for a seamless experience.<br />
 📌 Optimized Performance & Security for smooth operations.<br />
 
-# ✅ Instructor Features
+### ✅ Instructor Features
 ➡️ Create & Manage Courses (Title, Description, Price, Category).<br />
 ➡️ Upload Course Videos & PDFs with thumbnails.<br />
 ➡️ Publish Courses once all sections are added.<br />
 ➡️ Track Student Enrollments & Performance.<br />
 
-# ✅ Student Features
+### ✅ Student Features
 🎓 Browse & Purchase Courses securely.<br />
 🎥 Watch Course Videos with a smooth player experience.<br />
 📂 Download Course PDFs for offline study.<br />
@@ -82,14 +82,15 @@ npm start
 
 ## Screenshots
 
-![Screenshot 2025-02-07 210507](https://github.com/user-attachments/assets/c0c963fd-8b62-4d1c-b3b0-e31db956cf83)
+![Screenshot 2025-03-16 154127](https://github.com/user-attachments/assets/772ceaf3-4984-486a-9a1f-3e3c0c51b441)
 
-![Screenshot 2025-02-07 205736](https://github.com/user-attachments/assets/dc56577f-571c-40f4-afd8-22382c625773)
+![Screenshot 2025-03-16 154200](https://github.com/user-attachments/assets/e7fe8f5c-186a-40ad-8024-a53655eacb39)
 
-![Screenshot 2025-02-07 205720](https://github.com/user-attachments/assets/635d4a3c-c81b-46b0-9725-6172843b671e)
+![Screenshot 2025-03-16 154354](https://github.com/user-attachments/assets/00a2e896-4eae-4af4-8a6b-cbeec9d0ee99)
 
-![Screenshot 2025-02-07 205627](https://github.com/user-attachments/assets/a1d8167c-3b67-4273-97e3-8f3c4163c82c)
+![Screenshot 2025-03-16 154421](https://github.com/user-attachments/assets/a81b63ce-a590-4951-b59c-6a45189e17dd)
 
-![Screenshot 2025-02-07 205656](https://github.com/user-attachments/assets/a8251de3-1695-448c-8e61-046c0ec24a7c)
+![Screenshot 2025-03-16 154507](https://github.com/user-attachments/assets/01312de5-dd08-4bf2-80a7-fc902295b57a)
+
 
 
