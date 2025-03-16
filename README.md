@@ -4,7 +4,7 @@ SmartLearn is a modern EdTech platform built using the MERN stack that enables i
  
 ## 🚀 Features
 
-# ✅ General Features
+### ✅ General Features
 🎯 Role-Based Access Control (Instructor & Student).<br />
 💳 Secure Payments with Razorpay integration.<br />
 📂 Course Creation with video uploads & PDF attachments.<br />
