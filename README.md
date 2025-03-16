@@ -16,14 +16,13 @@ SmartLearn is a modern EdTech platform built using the MERN stack that enables i
 
 ### ✅ Instructor Features
 ➡️ Create & Manage Courses (Title, Description, Price, Category).<br />
-➡️ Upload Course Videos & PDFs with thumbnails.<br />
+➡️ Upload Course Videos with thumbnails.<br />
 ➡️ Publish Courses once all sections are added.<br />
 ➡️ Track Student Enrollments & Performance.<br />
 
 ### ✅ Student Features
 🎓 Browse & Purchase Courses securely.<br />
 🎥 Watch Course Videos with a smooth player experience.<br />
-📂 Download Course PDFs for offline study.<br />
 📊 Track Progress & Completed Courses.<br />
 
 ## 🛠️ Tech Stack 
